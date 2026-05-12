@@ -66,6 +66,7 @@ function buildLaw(law, allLaws) {
 ${law.image ? '<meta property="og:image" content="https://lawsofsoftwareengineering.com' + esc(law.image) + '">' : ''}
 <meta name="twitter:card" content="summary_large_image">
 <title>${esc(title)} — 软件工程法则</title>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <script>
 (function(){var t;try{t=localStorage.getItem('theme');}catch(e){}
 if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
