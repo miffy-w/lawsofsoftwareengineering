@@ -10,6 +10,7 @@
 <meta property="og:url" content="https://lawsofsoftwareengineering.vaste.top">
 <meta name="twitter:card" content="summary">
 <title>软件工程法则</title>
+<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}document.documentElement.setAttribute('data-theme',t||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))})()</script>
 <style>
   :root {
     --bg: #f8f9fa;
@@ -64,12 +65,14 @@
   /* Theme toggle */
   .theme-toggle {
     position: absolute; top: 16px; right: 20px;
-    width: 40px; height: 40px; border-radius: 50%;
-    border: 1px solid var(--border-strong); background: var(--card-bg);
-    cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s ease; font-family: inherit; color: var(--text);
+    display: flex; align-items: center; gap: 6px; padding: 5px 14px;
+    border-radius: 9999px; border: 1px solid var(--border-strong);
+    background: var(--card-bg); cursor: pointer;
+    font-size: 0.85rem; font-family: inherit; color: var(--text-secondary);
+    transition: all 0.2s ease; white-space: nowrap;
   }
-  .theme-toggle:hover { border-color: var(--accent); }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+  .theme-toggle svg { width: 16px; height: 16px; flex-shrink: 0; }
 
   /* Header */
   header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 40px 0 32px; text-align: center; position: relative; }
@@ -122,13 +125,13 @@
     header h1 { font-size: 1.75rem; }
     .cards-grid { grid-template-columns: 1fr; }
     .filter-divider { display: none; }
-    .theme-toggle { top: 10px; right: 12px; width: 36px; height: 36px; font-size: 1.1rem; }
+    .theme-toggle { top: 10px; right: 12px; padding: 4px 12px; font-size: 0.8rem; }
   }
 </style>
 </head>
 <body>
 <header>
-  <button class="theme-toggle" id="theme-toggle" aria-label="切换主题" title="切换明暗主题">☀</button>
+  <button class="theme-toggle" id="theme-toggle" aria-label="切换主题" title="切换明暗主题"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg id="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span id="theme-label">暗色</span></button>
   <div class="container">
     <h1>软件工程法则</h1>
     <p>塑造软件系统、团队和决策的原则与模式 — 共 56 条</p>
@@ -170,7 +173,10 @@
 
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);
-    toggle.innerHTML = theme === 'dark' ? '☾' : '☀';
+    var isDark = theme === 'dark';
+    document.getElementById('sun-icon').style.display = isDark ? 'none' : '';
+    document.getElementById('moon-icon').style.display = isDark ? '' : 'none';
+    document.getElementById('theme-label').textContent = isDark ? '亮色' : '暗色';
     try { localStorage.setItem('theme', theme); } catch(e) {}
   }
 

@@ -77,7 +77,7 @@ document.documentElement.setAttribute('data-theme',t);})();
 <div class="container">
   <nav style="display:flex;justify-content:space-between;align-items:center">
     <a href="/index.html">&larr; 返回列表</a>
-    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题" title="切换明暗主题">☀</button>
+    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题" title="切换明暗主题"><svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg id="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span id="theme-label">暗色</span></button>
   </nav>
   <article>
     <div class="article-header">
@@ -104,17 +104,28 @@ document.documentElement.setAttribute('data-theme',t);})();
 <script>
 (function(){
   var toggle=document.getElementById('theme-toggle');
+  var sunIcon=document.getElementById('sun-icon');
+  var moonIcon=document.getElementById('moon-icon');
+  var label=document.getElementById('theme-label');
   var html=document.documentElement;
-  toggle.innerHTML=html.getAttribute('data-theme')==='dark'?'☾':'☀';
+
+  function updateUI(theme){
+    var isDark=theme==='dark';
+    sunIcon.style.display=isDark?'none':'';
+    moonIcon.style.display=isDark?'':'none';
+    label.textContent=isDark?'亮色':'暗色';
+  }
+  updateUI(html.getAttribute('data-theme'));
+
   toggle.addEventListener('click',function(){
     var next=html.getAttribute('data-theme')==='dark'?'light':'dark';
     html.setAttribute('data-theme',next);
-    toggle.innerHTML=next==='dark'?'☾':'☀';
+    updateUI(next);
     try{localStorage.setItem('theme',next);}catch(e){}
   });
   window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){
     var s;try{s=localStorage.getItem('theme');}catch(ex){}
-    if(!s){var t=e.matches?'dark':'light';html.setAttribute('data-theme',t);toggle.innerHTML=t==='dark'?'☾':'☀';}
+    if(!s){var t=e.matches?'dark':'light';html.setAttribute('data-theme',t);updateUI(t);}
   });
 })();
 </script>
