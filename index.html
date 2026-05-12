@@ -130,7 +130,7 @@ function renderCards(filtered) {
   filtered.forEach(function(law) {
     var levelClass = law.experience === 'senior' ? 'senior' : (law.experience === 'mid' ? 'mid' : '');
     var html =
-      '<a class="card" href="laws/' + law.slug + '/">' +
+      '<a class="card" href="/laws/' + law.slug + '/">' +
         '<div class="card-title">' + law.title + '</div>' +
         '<div class="card-title-en">' + law.titleEn + '</div>' +
         '<div class="card-desc">' + law.description + '</div>' +
