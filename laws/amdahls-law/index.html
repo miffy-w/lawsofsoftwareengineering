@@ -11,11 +11,19 @@
 <meta property="og:image" content="https://lawsofsoftwareengineering.com/images/laws/amdahl-law.png">
 <meta name="twitter:card" content="summary_large_image">
 <title>阿姆达尔定律 — 软件工程法则</title>
+<script>
+(function(){var t;try{t=localStorage.getItem('theme');}catch(e){}
+if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);})();
+</script>
 <link rel="stylesheet" href="/laws/style.css">
 </head>
 <body>
 <div class="container">
-  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <nav style="display:flex;justify-content:space-between;align-items:center">
+    <a href="/index.html">&larr; 返回列表</a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题" title="切换明暗主题">☀</button>
+  </nav>
   <article>
     <div class="article-header">
       <h1>阿姆达尔定律</h1>
@@ -38,5 +46,22 @@
     <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
   </footer>
 </div>
+<script>
+(function(){
+  var toggle=document.getElementById('theme-toggle');
+  var html=document.documentElement;
+  toggle.innerHTML=html.getAttribute('data-theme')==='dark'?'☾':'☀';
+  toggle.addEventListener('click',function(){
+    var next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+    html.setAttribute('data-theme',next);
+    toggle.innerHTML=next==='dark'?'☾':'☀';
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){
+    var s;try{s=localStorage.getItem('theme');}catch(ex){}
+    if(!s){var t=e.matches?'dark':'light';html.setAttribute('data-theme',t);toggle.innerHTML=t==='dark'?'☾':'☀';}
+  });
+})();
+</script>
 </body>
 </html>

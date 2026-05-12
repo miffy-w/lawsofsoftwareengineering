@@ -11,71 +11,124 @@
 <meta name="twitter:card" content="summary">
 <title>软件工程法则</title>
 <style>
+  :root {
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-heading: #111827;
+    --text-body: #4b5563;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e5e7eb;
+    --border-strong: #d1d5db;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --tag-level-bg: #f0fdf4;
+    --tag-level-mid-bg: #fefce8;
+    --tag-level-senior-bg: #fef2f2;
+    --shadow: rgba(0,0,0,0.08);
+    --blockquote-bg: #f0f4ff;
+    --blockquote-text: #1e40af;
+    --section-heading-border: #f3f4f6;
+  }
+  [data-theme="dark"] {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #e2e8f0;
+    --text-heading: #f1f5f9;
+    --text-body: #cbd5e1;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #334155;
+    --border-strong: #475569;
+    --accent: #60a5fa;
+    --accent-light: #1e3a5f;
+    --tag-level-bg: #14532d;
+    --tag-level-mid-bg: #5c4b0a;
+    --tag-level-senior-bg: #7f1d1d;
+    --shadow: rgba(0,0,0,0.3);
+    --blockquote-bg: #1e3a5f;
+    --blockquote-text: #93c5fd;
+    --section-heading-border: #1e293b;
+  }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
-    background: #f8f9fa;
-    color: #1a1a2e;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.6;
+    transition: background 0.2s, color 0.2s;
   }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
+  /* Theme toggle */
+  .theme-toggle {
+    position: absolute; top: 16px; right: 20px;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border-strong); background: var(--card-bg);
+    cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s ease; font-family: inherit; color: var(--text);
+  }
+  .theme-toggle:hover { border-color: var(--accent); }
+
   /* Header */
-  header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 40px 0 32px; text-align: center; }
-  header h1 { font-size: 2.25rem; font-weight: 800; color: #111827; margin-bottom: 8px; }
-  header p { font-size: 1.1rem; color: #6b7280; }
+  header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 40px 0 32px; text-align: center; position: relative; }
+  header h1 { font-size: 2.25rem; font-weight: 800; color: var(--text-heading); margin-bottom: 8px; }
+  header p { font-size: 1.1rem; color: var(--text-secondary); }
 
   /* Filters */
   .filters { padding: 24px 0 20px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
   .filter-group { display: flex; flex-wrap: wrap; gap: 6px; }
-  .filter-label { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px; align-self: center; }
+  .filter-label { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px; align-self: center; }
   .filter-btn {
-    padding: 6px 16px; border: 1px solid #d1d5db; border-radius: 9999px;
-    background: #fff; color: #374151; font-size: 0.875rem; cursor: pointer;
+    padding: 6px 16px; border: 1px solid var(--border-strong); border-radius: 9999px;
+    background: var(--card-bg); color: var(--text); font-size: 0.875rem; cursor: pointer;
     transition: all 0.15s ease; font-family: inherit; white-space: nowrap;
   }
-  .filter-btn:hover { border-color: #2563eb; color: #2563eb; }
-  .filter-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; }
-  .filter-divider { width: 1px; height: 24px; background: #d1d5db; margin: 0 8px; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .filter-divider { width: 1px; height: 24px; background: var(--border-strong); margin: 0 8px; }
 
   /* Cards Grid */
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; padding: 0 0 60px; }
   .card {
-    background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 24px;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
     cursor: pointer; transition: all 0.2s ease; display: block; text-decoration: none; color: inherit;
   }
-  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: #2563eb; transform: translateY(-2px); }
-  .card-title { font-size: 1.15rem; font-weight: 700; color: #111827; margin-bottom: 4px; }
-  .card-title-en { font-size: 0.8rem; color: #9ca3af; font-weight: 400; margin-bottom: 10px; }
-  .card-desc { font-size: 0.925rem; color: #4b5563; line-height: 1.55; margin-bottom: 14px; }
+  .card:hover { box-shadow: 0 4px 12px var(--shadow); border-color: var(--accent); transform: translateY(-2px); }
+  .card-title { font-size: 1.15rem; font-weight: 700; color: var(--text-heading); margin-bottom: 4px; }
+  .card-title-en { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; margin-bottom: 10px; }
+  .card-desc { font-size: 0.925rem; color: var(--text-body); line-height: 1.55; margin-bottom: 14px; }
   .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
   .tag {
     display: inline-block; padding: 2px 10px; border-radius: 9999px;
     font-size: 0.75rem; font-weight: 600;
   }
-  .tag-group { background: #eff6ff; color: #2563eb; }
-  .tag-level { background: #f0fdf4; color: #16a34a; }
-  .tag-level.mid { background: #fefce8; color: #ca8a04; }
-  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  .tag-group { background: var(--accent-light); color: var(--accent); }
+  .tag-level { background: var(--tag-level-bg); color: #16a34a; }
+  .tag-level.mid { background: var(--tag-level-mid-bg); color: #ca8a04; }
+  .tag-level.senior { background: var(--tag-level-senior-bg); color: #dc2626; }
 
   /* Empty state */
-  .empty-state { text-align: center; padding: 60px 20px; color: #9ca3af; display: none; }
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); display: none; }
   .empty-state.show { display: block; }
 
   /* Footer */
-  footer { text-align: center; padding: 32px 20px; border-top: 1px solid #e5e7eb; font-size: 0.85rem; color: #9ca3af; }
-  footer a { color: #2563eb; text-decoration: none; }
+  footer { text-align: center; padding: 32px 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); }
+  footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
     header h1 { font-size: 1.75rem; }
     .cards-grid { grid-template-columns: 1fr; }
     .filter-divider { display: none; }
+    .theme-toggle { top: 10px; right: 12px; width: 36px; height: 36px; font-size: 1.1rem; }
   }
 </style>
 </head>
 <body>
 <header>
+  <button class="theme-toggle" id="theme-toggle" aria-label="切换主题" title="切换明暗主题">☀</button>
   <div class="container">
     <h1>软件工程法则</h1>
     <p>塑造软件系统、团队和决策的原则与模式 — 共 56 条</p>
@@ -110,6 +163,32 @@
 </footer>
 
 <script src="laws-zh.js"></script>
+<script>
+(function() {
+  var toggle = document.getElementById('theme-toggle');
+  var html = document.documentElement;
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    toggle.innerHTML = theme === 'dark' ? '☾' : '☀';
+    try { localStorage.setItem('theme', theme); } catch(e) {}
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch(e) {}
+  var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  setTheme(saved || preferred);
+
+  toggle.addEventListener('click', function() {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    var s = null; try { s = localStorage.getItem('theme'); } catch(ex) {}
+    if (!s) setTheme(e.matches ? 'dark' : 'light');
+  });
+})();
+</script>
 <script>
 (function() {
   var groups = [...new Set(LAWS.map(function(l) { return l.group; }))];
