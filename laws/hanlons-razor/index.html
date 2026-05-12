@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="汉隆剃刀: 能用愚蠢或粗心解释的，不要归咎于恶意。">
+<title>汉隆剃刀 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>汉隆剃刀</h1>
+      <div class="title-en">Hanlon's Razor</div>
+      <div class="tags-row">
+        <span class="tag tag-group">决策</span>
+        <span class="tag tag-level">初级</span>
+      </div>
+      <blockquote>能用愚蠢或粗心解释的，不要归咎于恶意。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>当事情出错时，大概率不是恶意，而是一个错误或误解。</li><li>不要立刻跳到「系统被黑了」或「有人故意破坏」的结论。先考虑更简单的解释（例如，配置文件遗漏或拼写错误）。</li><li>如果同事的代码有问题，大概率不是蓄意破坏。可能是因为赶工或不知情。尝试以提问而非指责的方式去沟通。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/hanlons-razor.png" alt="汉隆剃刀" loading="lazy" /><p>汉隆剃刀建议我们在面对糟糕的结果时，不要预设恶意，而应首先考虑人为错误或无知。如果一次提交引入了安全漏洞，那很可能是失误，而非蓄意破坏。在分布式系统中遇到「不可能」的错误时，大概率是配置问题或竞争条件，而非黑客入侵。在代码审查中看到糟糕的代码时，更可能是同事赶工或缺乏经验所致，而非有意破坏。应用汉隆剃刀能减少冲突，改善沟通，帮助我们在指责之前先寻找系统性原因。它不是让我们天真地否认恶意存在的可能性，而是提醒我们：在缺乏明确证据的情况下，错误远比阴谋更常见。</p></section>
+    <section><h2>案例</h2><p>一位客户报告你的软件「删除了我所有的数据！」很容易恐慌，以为是一位心怀不满的员工埋了逻辑炸弹。但汉隆剃刀会让你首先检查是否存在一个普通的 bug——结果你发现是文件过滤逻辑中的一个差一错误。另一个例子：某次部署后性能严重下降，直觉是「运维组在搞破坏」。但考察后发现，他们只是将一台关键的负载均衡器遗漏在部署脚本之外——这是一个过程错误，而非蓄意破坏。</p></section>
+    <section><h2>起源</h2><p>罗伯特·J·汉隆（Robert J. Hanlon）将这一原则投稿给了 1980 年一本墨菲定律变体汇编。拿破仑和歌德都有过类似表述，大意是不要将无能造成的后果归因于恶意。这一原则在软件和 DevOps 文化中已变得极为重要。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Hanlon%27s_razor" target="_blank" rel="noopener">Hanlon's Razor - Wikipedia</a> <span>&mdash; 该原则及其起源的概述</span></div><div class="reading-item"><a href="https://www.etsy.com/codeascraft/blameless-postmortems/" target="_blank" rel="noopener">Blameless Postmortems - Etsy</a> <span>&mdash; Etsy 如何在事件响应中应用无责备文化</span></div><div class="reading-item"><a href="https://amzn.to/3LbyIas" target="_blank" rel="noopener">The Field Guide to Understanding Human Error</a> <span>&mdash; Sidney Dekker 关于系统故障中人为因素的著作</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/occams-razor/"><strong>奥卡姆剃刀</strong><span>决策</span></a><a class="related-card" href="/laws/goodharts-law/"><strong>古德哈特定律</strong><span>规划</span></a><a class="related-card" href="/laws/postels-law/"><strong>波斯特尔定律</strong><span>质量</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

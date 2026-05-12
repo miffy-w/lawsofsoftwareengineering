@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="古斯塔夫森定律: 通过增加问题规模，可以在并行处理中实现显著的加速。">
+<title>古斯塔夫森定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>古斯塔夫森定律</h1>
+      <div class="title-en">Gustafson's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">规模</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>通过增加问题规模，可以在并行处理中实现显著的加速。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>随着计算资源的增长，你可以在给定时间内计算更多的问题，而不是更快地解决相同的问题。</li><li>它与阿姆达尔定律相对立——通过假设问题规模与计算能力成比例增长来保持并行处理器忙碌。</li><li>软件和算法应该被设计为「向外扩展」——随着可用处理器或机器的增加，可完成的工作量可以相应增加。</li><li>这解释了为什么许多大数据和科学计算应用能够有效利用大规模集群。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/gustafson-law.png" alt="古斯塔夫森定律" loading="lazy" /><p>古斯塔夫森定律是并行计算中的一个原则，提供了关于可扩展性的乐观视角。阿姆达尔定律假设问题规模固定，得出了加速受限的悲观结论；古斯塔夫森定律则改变了视角——当有更多处理器可用时，开发者倾向于增加问题规模来利用额外计算能力。如果你有一个能力翻倍的集群，你可能在相同时间内处理两倍的数据。工作的并行部分随 N 个处理器增长，而串行部分保持大致相同，从而产生可以接近线性的「比例加速」。古斯塔夫森的洞见是：开发者自然会通过提出更大的问题来利用更多的计算能力。</p></section>
+    <section><h2>案例</h2><p>在高性能计算中，气候建模在有更多处理器可用时通常会增加模型分辨率——1000 个 CPU 上的天气模拟不会只是快 1000 倍，而是在相同时间内运行一个更精细得多的全球模型得到更好的预报。在大数据处理中，如果一台机器分析 100 万条记录需要一小时，一个 10 台机器的集群可以在一小时内分析 1000 万条记录。MapReduce 和 Spark 等现代分布式系统鼓励随着节点增加将数据集拆分成更多分区，保持所有处理器忙碌。</p></section>
+    <section><h2>起源</h2><p>古斯塔夫森定律由计算机科学家约翰·L·古斯塔夫森（John L. Gustafson）与埃德温·巴尔西斯（Edwin Barsis）于 1988 年在题为《重新评估阿姆达尔定律》的论文中提出。当时阿姆达尔 1967 年的结果使大规模并行超级计算机备受质疑，古斯塔夫森观察到这只在工作负载保持不变时成立，通过增加问题规模可以达到接近线性的加速。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://dl.acm.org/doi/10.1145/42411.42415" target="_blank" rel="noopener">Reevaluating Amdahl's Law</a> <span>&mdash; 约翰·L·古斯塔夫森 1988 年的原始论文</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Gustafson%27s_law" target="_blank" rel="noopener">Gustafson's Law - Wikipedia</a> <span>&mdash; 该定律及其与阿姆达尔定律关系的概述</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/amdahls-law/"><strong>阿姆达尔定律</strong><span>规模</span></a><a class="related-card" href="/laws/metcalfes-law/"><strong>梅特卡夫定律</strong><span>规模</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

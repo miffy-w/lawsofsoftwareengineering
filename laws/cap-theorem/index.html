@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CAP 定理: 一个分布式系统只能同时保证一致性、可用性和分区容错性中的两者。">
+<title>CAP 定理 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>CAP 定理</h1>
+      <div class="title-en">CAP Theorem</div>
+      <div class="tags-row">
+        <span class="tag tag-group">架构</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>一个分布式系统只能同时保证一致性、可用性和分区容错性中的两者。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>分布式系统必须根据自身需求在一致性和可用性之间取舍——没有完美的解决方案。</li><li>分区容错性通常是必须的——网络故障是不可避免的——因此真正的选择在 C 和 A 之间。</li><li>大多数真实系统采取折中方案：在正常情况下同时提供 C 和 A，在网络分区时降级一侧。</li><li>选择数据库或架构时，理解它在 CAP 空间中的定位至关重要。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/CAP-theorem.png" alt="CAP 定理" loading="lazy" /><p>CAP 定理（也称布鲁尔定理）由 Eric Brewer 在 2000 年提出，后被形式化证明。它指出：在网络分区（P）发生时，分布式系统必须在一致性（C）和可用性（A）之间二选一。一致性意味着所有节点在同一时刻看到相同的数据；可用性意味着每个请求都能得到非错误的响应；分区容错性意味着系统在网络分区存在时仍能继续运作。选择 CP 的系统（如 HBase）会在网络分区时拒绝某些写入以保持一致性；选择 AP 的系统（如 Cassandra）会接受写入但可能返回不一致的数据。实际上，这不是非黑即白的选择——系统可以在一个连续谱上做出不同程度的权衡。</p></section>
+    <section><h2>案例</h2><p>一个银行系统必须选择 CP：当两个数据中心之间的网络中断时，系统可能会拒绝某些交易请求，而非冒险让两个数据中心出现不一致的账户余额。而一个社交媒体动态流可以选择 AP：当你发布一条状态更新时，即使某些服务器暂时无法同步，你的朋友最终仍能看到它——短暂的轻微不一致是可接受的。</p></section>
+    <section><h2>起源</h2><p>Eric Brewer 在 2000 年的 PODC（分布式计算原理）会议上以猜想的形式提出了这一观点。2002 年，Seth Gilbert 和 Nancy Lynch 在 MIT 正式证明了该定理的正确性。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/" target="_blank" rel="noopener">Brewer's CAP Theorem</a> <span>&mdash; Eric Brewer 关于 CAP 定理的综述文章</span></div><div class="reading-item"><a href="https://sites.cs.ucsb.edu/~rich/class/cs293b-cloud/papers/brewer-cap.pdf" target="_blank" rel="noopener">CAP Twelve Years Later: How the 'Rules' Have Changed</a> <span>&mdash; 分布式计算基础教材</span></div><div class="reading-item"><a href="https://groups.csail.mit.edu/tds/papers/Gilbert/Brewer2.pdf" target="_blank" rel="noopener">Gilbert &amp; Lynch 2002 Paper</a> <span>&mdash; Martin Kleppmann 关于分布式系统的权威著作</span></div><div class="reading-item"><a href="https://amzn.to/4pVAwU5" target="_blank" rel="noopener">Designing Data-Intensive Applications</a> <span>&mdash; Martin Kleppmann's comprehensive guide covering CAP and distributed systems</span></div><div class="reading-item"><a href="https://www.cl.cam.ac.uk/research/dtg/archived/files/publications/public/mk428/cap-critique.pdf" target="_blank" rel="noopener">A Critique of the CAP Theorem</a> <span>&mdash; Martin Kleppmann's 2015 paper arguing the theorem's definitions are ambiguous</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/fallacies-of-distributed-computing/"><strong>分布式计算谬误</strong><span>架构</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

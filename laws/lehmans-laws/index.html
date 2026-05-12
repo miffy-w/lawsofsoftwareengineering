@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="莱曼软件演化定律: 反映现实世界的软件必须不断演化，并且这种演化具有可预测的极限。">
+<title>莱曼软件演化定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>莱曼软件演化定律</h1>
+      <div class="title-en">Lehman's Laws of Software Evolution</div>
+      <div class="tags-row">
+        <span class="tag tag-group">质量</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>反映现实世界的软件必须不断演化，并且这种演化具有可预测的极限。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>如果系统不持续更新以满足新需求，其使用满意度会降低——成功的软件永远不会真正「完成」。</li><li>随着时间的推移，变更不断积累使系统变得更复杂——除非开发者投入精力进行重构，否则内部复杂性将持续增加。</li><li>组织在给定时间内只能做有限的事情——团队知识和流程开销等因素构成了硬性限制。</li><li>系统的感知质量会下降，可能由于用户期望上升、环境变化或小问题的积累。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/lehman-laws.png" alt="莱曼软件演化定律" loading="lazy" /><p>莱曼定律描述了在现实世界中运行的长期软件系统所面临的不可避免的现实。这类系统——业务软件、操作系统和平台——必须持续变化才能保持有用，这种变化既不是可选的也不是免费的。随着软件演化，复杂性不断积累，每次更改都会略微增加内部混乱程度，除非专门投入精力加以抑制。组织面临硬性限制：知识、协调和熟悉度约束着单次发布能吸收多少变更——增加人员并不能消除这些限制。莱曼的洞见是：成功软件永远不会真正「完成」，要持续满足新需求就必须持续增强。</p></section>
+    <section><h2>案例</h2><p>一个 2000 年部署的大型企业 ERP 系统，25 年来经历了业务规则更新、新技术集成和 UI 改版。根据莱曼定律，如果他们停止更新，系统将不再满足业务需求。公司观察到 2025 年添加功能所需时间比 2005 年更长——这正是复杂性累积和熟悉度约束的体现。Linux 内核是另一个例子：它经历了持续变化不断适应新硬件和需求，功能大幅增长，复杂性也随之增加，需要子系统维护者来管理。</p></section>
+    <section><h2>起源</h2><p>莱曼的早期定律于 1974 年形成，基于他对 IBM OS/360 等各种软件的研究。莱曼和贝拉迪（Lehman and Belady）通过观察版本历史和增长指标得出了最初的三条定律。随着时间的推移，莱曼在 20 世纪 80 年代和 90 年代不断完善这些定律——从 1974 年的 3 条增加到 5 条，最终在 20 世纪 90 年代达到 8 条。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://ieeexplore.ieee.org/document/1456074" target="_blank" rel="noopener">Programs, Life Cycles, and Laws of Software Evolution</a> <span>&mdash; 莱曼和贝拉迪 1980 年关于软件演化的原始论文</span></div><div class="reading-item"><a href="https://ieeexplore.ieee.org/document/637156" target="_blank" rel="noopener">Laws of Software Evolution - The Nineties View</a> <span>&mdash; 莱曼等人 1997 年关于这些定律的更新及额外研究</span></div><div class="reading-item"><a href="https://link.springer.com/chapter/10.1007/978-3-540-75381-0_1" target="_blank" rel="noopener">The Evolution of the Laws of Software Evolution</a> <span>&mdash; 关于莱曼定律如何随时间演化的概述</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/brooks-law/"><strong>布鲁克斯定律</strong><span>团队</span></a><a class="related-card" href="/laws/conways-law/"><strong>康威定律</strong><span>团队</span></a><a class="related-card" href="/laws/technical-debt/"><strong>技术债务</strong><span>质量</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

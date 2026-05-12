@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="梅特卡夫定律: 网络的价值与用户数量的平方成正比。">
+<title>梅特卡夫定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>梅特卡夫定律</h1>
+      <div class="title-en">Metcalfe's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">规模</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>网络的价值与用户数量的平方成正比。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>将用户数量翻倍，潜在的连接大约增加四倍。</li><li>每个新用户通过创造新的互动机会为现有用户增加价值——产品随着用户基础的增长而指数级更有用。</li><li>该定律有助于解释为什么社交媒体和消息平台在达到临界点后价值可以爆发式增长。</li><li>网络效应的负面影响是锁定和退出壁垒——离开一个大型网络平台的成本随着其规模增长。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/metcalfe-law.png" alt="梅特卡夫定律" loading="lazy" /><p>梅特卡夫定律是关于通信网络的观察，已被推广到许多技术生态系统。它指出网络的价值与连接用户数量的平方成正比——5 个节点最多可能有 10 对连接，12 个节点则有 66 对。网络效应自我加强，是一种强者愈强的现象。最初增加一个用户可能不会改变什么，但后来增加第 1000 万个用户可能会带来数百万次新的互动，在技术领域创造了赢家通吃的动态。然而这是个简化模型——并非每个用户都与每个其他用户连接，增量价值可能会递减。</p></section>
+    <section><h2>案例</h2><p>在社交媒体中，早期 Facebook 如果只有少数朋友是成员其效用很低，但随着每个人都加入它变得极其有价值。WhatsApp 或微信也是如此——每个新用户都可以与许多其他人开启聊天。梅特卡夫定律也可以反向作用：如果用户开始离开一个社交网络，价值的下降比线性更快，每次离开都减少所有留下者的潜在连接，造成「死亡螺旋」。</p></section>
+    <section><h2>起源</h2><p>梅特卡夫定律以罗伯特·梅特卡夫（Robert Metcalfe）命名，他在 1980 年左右讨论以太网和网络采用时提出了这一概念。1983 年他向 3Com 公司展示了这一理念，论证网络价值随兼容通信设备数量的平方增长。「梅特卡夫定律」一词在 1993 年乔治·吉尔德（George Gilder）在《福布斯》杂志的文章中被普及。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://blog.simeonov.com/2006/07/26/metcalfes-law-more-misunderstood-than-wrong/" target="_blank" rel="noopener">Metcalfe's Law: more misunderstood than wrong?</a> <span>&mdash; 该定律的应用和局限性分析</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Metcalfe%27s_law" target="_blank" rel="noopener">Metcalfe's Law - Wikipedia</a> <span>&mdash; 该定律及其历史概述</span></div><div class="reading-item"><a href="https://www.discovery.org/a/41/" target="_blank" rel="noopener">Metcalfe's Law and Legacy</a> <span>&mdash; 乔治·吉尔德在《福布斯》ASAP 上的原始文章</span></div><div class="reading-item"><a href="https://doi.org/10.1007/s11390-015-1518-1" target="_blank" rel="noopener">Tencent and Facebook Data Validate Metcalfe's Law</a> <span>&mdash; 使用真实社交网络数据对梅特卡夫定律的实证验证</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/amdahls-law/"><strong>阿姆达尔定律</strong><span>规模</span></a><a class="related-card" href="/laws/gustafsons-law/"><strong>古斯塔夫森定律</strong><span>规模</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

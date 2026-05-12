@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="巴士因子: 团队中关键成员的最小数量，他们的丧失将使项目陷入严重困境。">
+<title>巴士因子 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>巴士因子</h1>
+      <div class="title-en">Bus Factor</div>
+      <div class="tags-row">
+        <span class="tag tag-group">团队</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>团队中关键成员的最小数量，他们的丧失将使项目陷入严重困境。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>巴士因子低意味着项目存在严重的单点故障风险——一个人或多个人是关键瓶颈。</li><li>提高巴士因子的方法：代码评审、结对编程、文档、任务轮换和交叉培训。</li><li>定期评估团队巴士因子——如果某个模块只有一个主人，那就是高风险。</li><li>巴士因子不仅是技术问题，也是管理和业务连续性问题。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/bus-factor.png" alt="巴士因子" loading="lazy" /><p>巴士因子（也被称为「彩票因子」）是一个略带黑色幽默的度量标准，用于评估关键人员风险：如果 N 个关键成员同时「被巴士撞了」（或更现实地——同时离职、生病、或发生意外），项目是否还能继续？巴士因子为 1 意味着整个项目依赖一个人，这是极其危险的。高表现团队的目标是提高巴士因子——通过代码评审、结对编程、全面的文档和多技能交叉培训，确保没有人是唯一理解某个关键部分的人。</p></section>
+    <section><h2>案例</h2><p>某金融交易系统运行良好已经有五年了。某天，唯一了解核心匹配引擎的架构师去独家创业了。引擎出现了一个小 bug——只有一个人能修复。由于缺乏文档，所涉代码晦涩难懂，团队花了三个月才恢复生产稳定性。巴士因子为 1。相比之下，另一个团队刻意确保每个模块至少有两个人了解，实践结对编程，并在团队内部轮换任务。这种交叉培训使得巴士因子升高，降低了人员风险。</p></section>
+    <section><h2>起源</h2><p>这一概念在软件工程社区中自然产生，作为评估项目健康度和可持续性的一项经验法则。虽然没有单一起源，但它已经成为风险管理和团队健康评估中普遍使用的术语。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Bus_factor" target="_blank" rel="noopener">Bus Factor - Wikipedia</a> <span>&mdash; 关于软件项目中风险评估的指南</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Npm_left-pad_incident" target="_blank" rel="noopener">Left-pad incident - Wikipedia</a> <span>&mdash; 关于如何建立弹性工程团队的研究</span></div><div class="reading-item"><a href="https://brucefwebster.com/2008/04/11/the-wetware-crisis-the-dead-sea-effect/" target="_blank" rel="noopener">The Dead Sea Effect - Bruce F. Webster</a> <span>&mdash; Google 工程实践文档中关于团队健康的内容</span></div><div class="reading-item"><a href="https://legacy.python.org/search/hypermail/python-1994q2/1040.html" target="_blank" rel="noopener">If Guido was hit by a bus?</a> <span>&mdash; Michael McLay's 1994 mailing list post, one of the earliest references to the bus factor concept</span></div><div class="reading-item"><a href="https://www.wiley.com/en-us/Organizational+Patterns+of+Agile+Software+Development-p-9780131467408" target="_blank" rel="noopener">Organizational Patterns of Agile Software Development</a> <span>&mdash; Coplien &amp; Harrison (2004) - patterns for building effective software organizations</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/conways-law/"><strong>康威定律</strong><span>团队</span></a><a class="related-card" href="/laws/brooks-law/"><strong>布鲁克斯定律</strong><span>团队</span></a><a class="related-card" href="/laws/dunbars-number/"><strong>邓巴数</strong><span>团队</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

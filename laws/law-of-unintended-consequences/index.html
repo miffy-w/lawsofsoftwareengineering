@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="软件工程法则详情">
-<title>软件工程法则</title>
+<meta name="description" content="意外后果法则: 每当你改变一个复杂系统时，都要预料到意外。">
+<title>意外后果法则 — 软件工程法则</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -12,13 +12,9 @@
     background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
   }
   .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-
-  /* Navigation */
   nav { padding: 24px 0; }
   nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
   nav a:hover { text-decoration: underline; }
-
-  /* Article header */
   .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
   .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
   .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
@@ -28,16 +24,11 @@
     font-weight: 500; color: #1e40af; font-style: italic;
   }
   .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag {
-    display: inline-block; padding: 3px 12px; border-radius: 9999px;
-    font-size: 0.8rem; font-weight: 600;
-  }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
   .tag-group { background: #eff6ff; color: #2563eb; }
   .tag-level { background: #f0fdf4; color: #16a34a; }
   .tag-level.mid { background: #fefce8; color: #ca8a04; }
   .tag-level.senior { background: #fef2f2; color: #dc2626; }
-
-  /* Content sections */
   section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
   section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
   section p { margin-bottom: 12px; color: #374151; }
@@ -46,14 +37,10 @@
   section li { margin-bottom: 8px; color: #374151; }
   section li:last-child { margin-bottom: 0; }
   section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
-
-  /* Further reading */
   .reading-item { margin-bottom: 10px; }
   .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
   .reading-item a:hover { text-decoration: underline; }
   .reading-item span { color: #6b7280; font-size: 0.9rem; }
-
-  /* Related laws */
   .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
   .related-card {
     display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
@@ -62,18 +49,9 @@
   .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
   .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
   .related-card span { font-size: 0.8rem; color: #6b7280; }
-
-  /* 404 state */
-  .not-found { text-align: center; padding: 80px 20px; display: none; }
-  .not-found.show { display: block; }
-  .not-found h2 { font-size: 1.5rem; color: #111827; margin-bottom: 8px; }
-  .not-found p { color: #6b7280; }
-
-  /* Footer */
   footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
   footer a { color: #2563eb; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
-
   @media (max-width: 640px) {
     .article-header { padding: 20px; }
     .article-header h1 { font-size: 1.4rem; }
@@ -85,84 +63,27 @@
 <body>
 <div class="container">
   <nav><a href="/index.html">&larr; 返回列表</a></nav>
-
-  <div id="content"></div>
-  <div class="not-found" id="not-found">
-    <h2>未找到该法则</h2>
-    <p>请检查链接是否正确，或<a href="/index.html">返回首页</a>浏览全部法则。</p>
-  </div>
-
+  <article>
+    <div class="article-header">
+      <h1>意外后果法则</h1>
+      <div class="title-en">Law of Unintended Consequences</div>
+      <div class="tags-row">
+        <span class="tag tag-group">架构</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>每当你改变一个复杂系统时，都要预料到意外。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>复杂系统中的任何变更都可能产生不可预见的副作用。</li><li>降低风险的方法：小批量变更、完善的测试、渐进式发布（如灰度或金丝雀部署）。</li><li>监控和可观测性是发现意外后果的关键——如果看不到就不知道哪里出问题了。</li><li>不可能完全消除意外后果——建立快速检测和回滚的机制至关重要。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/law-of-unintended-consequences.png" alt="意外后果法则" loading="lazy" /><p>任何对复杂系统的改变——无论是代码修改、配置调整还是流程变更——都可能产生无法预见的副作用。复杂系统中的各个部分以交织的方式相互关联，一个看似简单的改动可以在远离之处产生连锁效应。这一法则在金融系统、分布式系统和大型组织中尤为明显。避免意外后果的方法包括：小批量变更、全面测试、渐进式发布和监控。但重要的是，即使采取了所有这些措施，完全消除意外后果是不可能的——复杂系统的固有属性就是不可预测性。</p></section>
+    <section><h2>案例</h2><p>一个看似无害的数据库索引调整，意外地改变了查询优化器的执行计划选择，导致原本正常运行的报表查询突然慢了 100 倍。一个团队在微服务中添加了请求超时限制，却未告知调用方。下游服务因超时开始重试，导致请求量翻倍，最终形成了级联雪崩式的故障扩散。</p></section>
+    <section><h2>起源</h2><p>这一概念有着深厚的社会学和经济学根源——最早可追溯至亚当·斯密（Adam Smith）的「看不见的手」和罗伯特·默顿（Robert K. Merton）在 1936 年对社会行动意外后果的系统性分析。在软件工程领域，随着系统复杂性增长，这一法则成为了核心工程准则。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Unintended_consequences" target="_blank" rel="noopener">Unintended consequences - Wikipedia</a> <span>&mdash; 乔尔·斯波尔斯基关于系统复杂性的文章</span></div><div class="reading-item"><a href="https://www.jstor.org/stable/2084615" target="_blank" rel="noopener">The Unanticipated Consequences of Purposive Social Action</a> <span>&mdash; 关于理解和应对软件中的意外后果</span></div><div class="reading-item"><a href="https://freakonomics.com/" target="_blank" rel="noopener">Freakonomics</a> <span>&mdash; 持续交付和渐进式发布的权威指南</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/hyrums-law/"><strong>海勒姆定律</strong><span>架构</span></a><a class="related-card" href="/laws/galls-law/"><strong>加尔定律</strong><span>架构</span></a></div></section>
+  </article>
   <footer>
     <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
     <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
   </footer>
 </div>
-
-<script src="/laws-zh.js"></script>
-<script>
-(function() {
-  var path = window.location.pathname;
-  var slug = path.replace(/^\/|\/$/g, '').split('/').pop();
-
-  var law = LAWS.find(function(l) { return l.slug === slug; });
-
-  if (!law) {
-    document.getElementById('not-found').classList.add('show');
-    document.title = '未找到 — 软件工程法则';
-    return;
-  }
-
-  document.title = law.title + ' — 软件工程法则';
-  document.querySelector('meta[name="description"]').content = law.title + ': ' + law.description;
-
-  var levelClass = law.experience === 'senior' ? 'senior' : (law.experience === 'mid' ? 'mid' : '');
-
-  var relatedHtml = '';
-  if (law.related && law.related.length > 0) {
-    var relatedCards = law.related.map(function(slug) {
-      var r = LAWS.find(function(l) { return l.slug === slug; });
-      if (!r) return '';
-      return '<a class="related-card" href="/laws/' + r.slug + '/"><strong>' + r.title + '</strong><span>' + (GROUP_MAP[r.group] || r.group) + '</span></a>';
-    }).filter(Boolean).join('');
-    if (relatedCards) {
-      relatedHtml = '<section><h2>相关法则</h2><div class="related-grid">' + relatedCards + '</div></section>';
-    }
-  }
-
-  var readingHtml = '';
-  if (law.further_reading && law.further_reading.length > 0) {
-    var items = law.further_reading.map(function(r) {
-      return '<div class="reading-item"><a href="' + r.url + '" target="_blank" rel="noopener">' + r.title + '</a> <span>&mdash; ' + (r.description || '') + '</span></div>';
-    }).join('');
-    readingHtml = '<section><h2>参考阅读</h2>' + items + '</section>';
-  }
-
-  var takeawaysHtml = '';
-  if (law.takeaways && law.takeaways.length > 0) {
-    takeawaysHtml = '<section><h2>要点总结</h2><ul>' + law.takeaways.map(function(t) { return '<li>' + t + '</li>'; }).join('') + '</ul></section>';
-  }
-
-  var html =
-    '<article>' +
-      '<div class="article-header">' +
-        '<h1>' + law.title + '</h1>' +
-        '<div class="title-en">' + law.titleEn + '</div>' +
-        '<div class="tags-row">' +
-          '<span class="tag tag-group">' + (GROUP_MAP[law.group] || law.group) + '</span>' +
-          '<span class="tag tag-level' + (levelClass ? ' ' + levelClass : '') + '">' + (LEVEL_MAP[law.experience] || law.experience) + '</span>' +
-        '</div>' +
-        '<blockquote>' + law.description + '</blockquote>' +
-      '</div>' +
-      takeawaysHtml +
-      '<section><h2>概述</h2>' + (law.image ? '<img src="' + law.image + '" alt="' + law.title + '" loading="lazy" />' : '') + '<p>' + law.overview + '</p></section>' +
-      '<section><h2>案例</h2><p>' + law.examples + '</p></section>' +
-      '<section><h2>起源</h2><p>' + law.origins + '</p></section>' +
-      readingHtml +
-      relatedHtml +
-    '</article>';
-
-  document.getElementById('content').innerHTML = html;
-})();
-</script>
 </body>
 </html>

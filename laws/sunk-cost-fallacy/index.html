@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="沉没成本谬误: 因为已经投入了时间或精力而坚持一个选择，即使放弃对你更有利。">
+<title>沉没成本谬误 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>沉没成本谬误</h1>
+      <div class="title-en">Sunk Cost Fallacy</div>
+      <div class="tags-row">
+        <span class="tag tag-group">决策</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>因为已经投入了时间或精力而坚持一个选择，即使放弃对你更有利。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>不要因为过去的投入而继续困在错误中。「我们已经投了一年了」不是继续的理由，如果方案明显行不通的话。</li><li>健康的工程组织会转向或停止不再有意义的项目。因为沉没成本而继续坏项目，通常只会导致更大的损失。</li><li>使用明确的衡量标准和决策点：「如果我们到季度末没达到目标 X，就重新评估或终止。」</li><li>团队应该能够安全地承认一个项目行不通，而不必担心被责备。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/sunk-cost-fallacy.png" alt="沉没成本谬误" loading="lazy" /><p>沉没成本谬误是一种影响决策的认知偏差。人类会非理性地高估自己已经投入的东西——无论是金钱、时间还是精力——即便这些投入已经无法收回。在软件工程中，它无处不在：一个团队花两年构建了自定义框架，尽管它又慢又难用，但「投入太多，不能放弃」；一个重构已经做了三个月，搞砸了代码库，但因为已经花了时间就不愿回退；一个项目显然无法按时交付，但没人愿意喊停。沉没成本谬误让我们把过去的投入当作继续前进的理由，而理性的决策应该只考虑未来的成本和收益。识别这种偏差，才能做出更清晰的工程决策。</p></section>
+    <section><h2>案例</h2><p>一家公司花了两年时间构建内部 CMS，结果发现它漏洞百出，团队效率极低。客观分析会表明采用现成的 CMS 更好，但「我们投入了这么多」的心态让他们继续维护这个糟糕的系统。另一个案例：一个微服务迁移项目原本预计六个月，现在已是第十八个月，复杂度远超预期。尽管停下来的理由很充分，但「马上就到了」的想法让他们继续投入更多资源。</p></section>
+    <section><h2>起源</h2><p>沉没成本的概念源自经济学。「沉没成本谬误」一词由行为经济学家和心理学家在 20 世纪末普及。诺贝尔奖得主丹尼尔·卡尼曼（Daniel Kahneman）和阿莫斯·特沃斯基（Amos Tversky）展示了人们如何非理性地让过去不可收回的投资影响当前决策，这与理性经济行为者的假设相矛盾。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://www.sciencedirect.com/science/article/abs/pii/0749597885900494" target="_blank" rel="noopener">The Psychology of Sunk Cost</a> <span>&mdash; Arkes 和 Blumer 1985 年关于沉没成本心理学的奠基性论文</span></div><div class="reading-item"><a href="https://thedecisionlab.com/biases/the-sunk-cost-fallacy" target="_blank" rel="noopener">The Sunk Cost Fallacy</a> <span>&mdash; 从行为科学角度的全面概述及案例</span></div><div class="reading-item"><a href="https://amzn.to/4sfXfMr" target="_blank" rel="noopener">Thinking, Fast and Slow</a> <span>&mdash; Daniel Kahneman 涵盖包括沉没成本在内的认知偏差的开创性著作</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/occams-razor/"><strong>奥卡姆剃刀</strong><span>决策</span></a><a class="related-card" href="/laws/technical-debt/"><strong>技术债务</strong><span>质量</span></a><a class="related-card" href="/laws/second-system-effect/"><strong>第二系统效应</strong><span>架构</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

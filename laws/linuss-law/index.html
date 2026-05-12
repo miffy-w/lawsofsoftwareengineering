@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="林纳斯定律: 只要有足够多的眼球审视，所有 bug 都是浅显的。">
+<title>林纳斯定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>林纳斯定律</h1>
+      <div class="title-en">Linus's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">质量</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>只要有足够多的眼球审视，所有 bug 都是浅显的。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>林纳斯定律强调了同行评审和社区在软件开发中的力量——如果代码对众多开发人员开放，总有人拥有识别和修复某个 bug 的专业知识。</li><li>这常被引用为开源软件的关键优势：当源代码广泛可用时，就能积累庞大的贡献者群体。</li><li>林纳斯定律的前提是有活跃的社区在真正审视——仅仅开放源代码并不会神奇地修复 bug。</li><li>该定律也支持代码审查、结对编程等内部实践——增加审视代码的眼球数量。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/linus-law.png" alt="林纳斯定律" loading="lazy" /><p>林纳斯定律由埃里克·S·雷蒙德（Eric S. Raymond）提出，以 Linux 创始人林纳斯·托瓦兹（Linus Torvalds）命名。它捕捉了开源开发的核心优势：当足够多的人审查和使用代码时，bug 会迅速被发现和修复。对你来说是令人困惑的 bug，对另一位程序员来说可能显而易见。这一定律强调了透明和协作如何带来更健壮、更可靠的软件。当然，这并非绝对——协调和质量控制仍然是必要的——但作为指导原则，它捕捉了大型开发生态系统的自我修正特性。「许多眼球」原则也是为什么内部代码审查和结对编程能够有效的原因。</p></section>
+    <section><h2>案例</h2><p>以 Apache HTTP Server 为例，这是一个被数百万人使用的开源 Web 服务器。由于其代码开放且用户基数庞大，许多开发者在某个时刻都曾调试或改进过它。如果存在安全漏洞或 bug，全球社区中某人发现并报告它的概率非常高。Log4j 中臭名昭著的 Log4Shell 漏洞就是由社区发现并修复的。相比之下，一个只有少数客户的专有企业软件，如果出现微妙的 bug，由于「眼球」有限，它可能需要很长时间才能浮现并被调试。</p></section>
+    <section><h2>起源</h2><p>埃里克·S·雷蒙德（Eric S. Raymond）在 1997 年首次发表的《大教堂与集市》中提出了这一定律，并于 1999 年出版成书。雷蒙德写道：「只要有足够多的眼球审视，所有 bug 都是浅显的」，并将其命名为林纳斯定律，以向托瓦兹的开放开发方法致敬。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://amzn.to/49cYD9Y" target="_blank" rel="noopener">The Cathedral and the Bazaar</a> <span>&mdash; 埃里克·S·雷蒙德关于开源开发的具有影响力的论文</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Linus%27s_law" target="_blank" rel="noopener">Linus's Law - Wikipedia</a> <span>&mdash; 关于该定律及其影响的概述</span></div><div class="reading-item"><a href="https://techcrunch.com/2012/02/23/with-many-eyeballs-all-bugs-are-shallow/" target="_blank" rel="noopener">With Enough Eyeballs, All Bugs Are Shallow - TechCrunch</a> <span>&mdash; 在真实世界漏洞背景下对该定律的分析</span></div><div class="reading-item"><a href="https://www.sciencedirect.com/science/article/abs/pii/S1071581915000087" target="_blank" rel="noopener">Revisiting Linus's Law: Benefits and Challenges of OSS Peer Review</a> <span>&mdash; 拉斯·考克斯关于 xz 后门事件的详细时间线——「多眼假说」的警示性反例</span></div><div class="reading-item"><a href="https://www.computer.org/csdl/magazine/mi/2012/01/mmi2012010072/13rRUzphDuy" target="_blank" rel="noopener">An Empirical Study of Build Maintenance Effort - IEEE</a> <span>&mdash; IEEE study examining software maintenance and the many-eyes hypothesis</span></div><div class="reading-item"><a href="https://research.swtch.com/xz-timeline" target="_blank" rel="noopener">Timeline of the xz open source attack</a> <span>&mdash; Russ Cox's detailed timeline of the xz backdoor, a striking counterexample to many-eyes review</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/brooks-law/"><strong>布鲁克斯定律</strong><span>团队</span></a><a class="related-card" href="/laws/sturgeons-law/"><strong>斯特金定律</strong><span>质量</span></a><a class="related-card" href="/laws/bus-factor/"><strong>巴士因子</strong><span>团队</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

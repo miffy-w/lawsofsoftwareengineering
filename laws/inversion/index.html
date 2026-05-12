@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="逆向思维: 通过考虑相反的结果并从那一点反向推导来解决问题。">
+<title>逆向思维 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>逆向思维</h1>
+      <div class="title-en">Inversion</div>
+      <div class="tags-row">
+        <span class="tag tag-group">决策</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>通过考虑相反的结果并从那一点反向推导来解决问题。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>对任何目标，也要问反向的问题。如果目标是「按时交付项目」，我们应该思考「什么会导致我们错过截止日期？」列出这些因素（范围蔓延、任务低估等）有助于我们实现目标并规避问题。</li><li>使用事前验尸等技巧：假设项目已经失败了，然后确定可能的原因。这种批判性思维可以揭示乐观规划忽略的风险。</li><li>在设计和测试中，要考虑系统被恶意使用的边缘情况。例如，恶意用户如何破坏这个 API？这种逆向思维能导向更好的解决方案（例如，一旦理解了事物如何被破坏，就可以添加验证、限流等）。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/inversion.png" alt="逆向思维" loading="lazy" /><p>逆向思维的核心洞见是：当你从相反的角度审视问题时，特定的见解会变得清晰可见。在软件工程中，与其只为最佳情况做设计，不如刻意从最坏情况出发。与其问「我们如何交付这个项目？」，不如问「什么东西会导致我们错过截止日期？」。与其只测试快乐路径，不如设计故意破坏系统的混沌实验。Netflix 的 Chaos Monkey 就是逆向思维的绝佳体现：随机终止生产服务器以验证系统的韧性。通过设想失败，我们反而能更好地构建成功。项目中可以使用「事前验尸」技术：假设项目已经失败，倒推出最可能的原因。</p></section>
+    <section><h2>案例</h2><p>Netflix 的 Chaos Monkey 是一个典型例子。通常，工程师努力保持系统运行。Chaos Monkey 则做相反的事：在生产环境中随机终止服务器以测试韧性。这让 Netflix 能够建立能抵御实际故障的系统——通过逆向思维，他们让系统变得更强大。事后验尸分析已经发生的事故，而事前验尸假设项目已经失败，然后推导可能的原因——这能在问题发生前揭示风险。</p></section>
+    <section><h2>起源</h2><p>逆向思维因投资者查理·芒格（Charlie Munger）的名言而知名：「我只想知道我会死在哪里，这样我就永远不会去那个地方。」芒格受到 19 世纪数学家卡尔·古斯塔夫·雅可比（Carl Gustav Jacobi）的启发，雅可比的座右铭是「颠倒，永远颠倒」（Invert, always invert）。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://www.stripe.press/poor-charlies-almanack" target="_blank" rel="noopener">Poor Charlie's Almanack - Charlie Munger</a> <span>&mdash; 芒格关于包括逆向思维在内的思维模型的演讲和谈话合集</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Antifragile_(book)" target="_blank" rel="noopener">Antifragile - Nassim Nicholas Taleb</a> <span>&mdash; 探索从混乱和压力中获益的系统的著作</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/first-principles-thinking/"><strong>第一性原理思维</strong><span>决策</span></a><a class="related-card" href="/laws/murphys-law/"><strong>墨菲定律</strong><span>质量</span></a><a class="related-card" href="/laws/premature-optimization/"><strong>过早优化（克努斯优化原则）</strong><span>规划</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

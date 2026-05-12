@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="斯特金定律: 任何事物中的 90% 都是垃圾。">
+<title>斯特金定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>斯特金定律</h1>
+      <div class="title-en">Sturgeon's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">质量</span>
+        <span class="tag tag-level">初级</span>
+      </div>
+      <blockquote>任何事物中的 90% 都是垃圾。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>这像是帕累托原则（80/20 规则）的极端形式——大部分产出的东西就是不好，好的东西是例外。</li><li>在软件中，通常有很多功能或代码路径增加的价值非常少，关键挑战是找到最大化高影响力那 10% 的方法。</li><li>大多数新概念或技术未能兑现承诺，而真正出色的那些则会脱颖而出。</li><li>不是所有代码都值得保留——频繁反思和精简代码库是健康的实践。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/sturgeon-law.png" alt="斯特金定律" loading="lazy" /><p>西奥多·斯特金（Theodore Sturgeon）以回应「90% 的科幻小说都是垃圾」的批评而闻名——他的回应是「90% 的一切都是垃圾」。在技术领域，这意味着大多数代码或功能是不必要的，也许 90% 的实验或功能都未能成功，只有 10% 真正创造价值。这支持了「更少的代码是更高质量的」假设，并与 10 倍工程师的概念相呼应——10 倍工程师不是写 10 倍代码的人，而是能识别出能带来 10 倍价值的那 10% 工作的人。风险不在于那 90% 的低质量，而在于假装它不是低质量。</p></section>
+    <section><h2>案例</h2><p>一个应用有 100 个功能，用户分析显示用户大量使用其中 10 个，其余的几乎不用——这正是斯特金定律所预测的。一个组织每个季度有很多项目想法要开发，大多数不会有任何成果，但少数几个可能是改变游戏规则的。在代码审查领域，大量代码既不优雅也不必要。认识到斯特金定律意味着持续精炼，假设存在大量「噪音」，专注于找到「信号」。</p></section>
+    <section><h2>起源</h2><p>西奥多·斯特金（Theodore Sturgeon）是一位科幻小说作家，在 1957 年创造了这个说法。它最初以「斯特金的启示」（Sturgeon's Revelation）发表在 1957 年的《Venture》杂志上。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Sturgeon%27s_law" target="_blank" rel="noopener">Sturgeon's Law - Wikipedia</a> <span>&mdash; 该定律及其起源的概述</span></div><div class="reading-item"><a href="https://www.reddit.com/r/Wordpress/comments/1n0lnas/over_50_of_plugins_in_the_wordpress_repository/" target="_blank" rel="noopener">Over 50% of plugins in the WordPress repository haven't been updated in 2+ years</a> <span>&mdash; Reddit 上关于 WordPress 插件生态系统中斯特金定律的讨论</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/goodharts-law/"><strong>古德哈特定律</strong><span>规划</span></a><a class="related-card" href="/laws/galls-law/"><strong>加尔定律</strong><span>架构</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

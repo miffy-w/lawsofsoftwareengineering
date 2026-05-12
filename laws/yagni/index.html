@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="YAGNI（你不会需要它）: 不要添加直到确实需要的功能。">
+<title>YAGNI（你不会需要它） — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>YAGNI（你不会需要它）</h1>
+      <div class="title-en">YAGNI (You Aren't Gonna Need It)</div>
+      <div class="tags-row">
+        <span class="tag tag-group">设计</span>
+        <span class="tag tag-level">初级</span>
+      </div>
+      <blockquote>不要添加直到确实需要的功能。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>不要在当下实现你「认为」未来可能需要的东西，因为大多数预测都是错的。</li><li>每次添加不必要的代码都意味着需要维护它，增加了代码库的长期成本。</li><li>当实际需要某项功能时再实现，此时你对该功能的了解远比现在多。</li><li>YAGNI 并不意味着要编写不灵活的代码——但灵活性应该来自良好的设计，而非过度构建。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/yagni.png" alt="YAGNI（你不会需要它）" loading="lazy" /><p>YAGNI 是极限编程（XP）的核心原则之一，强调不要为未来可能的需求预先构建功能。软件开发中常见的一种浪费是：开发者花大量时间构建他们认为「以后会用到」的灵活性和功能，但绝大多数这些功能永远不会被使用。YAGNI 要求我们只在有明确、即时的需求时才实现功能，而不是基于推测。这样做可以保持代码库简洁、减少维护负担，并让团队专注于真正重要的功能。</p></section>
+    <section><h2>案例</h2><p>团队在开发一个用户管理系统时，考虑到「以后可能需要支持 OAuth」，花了两周实现了一个完整的社交登录模块（支持 Google、Facebook、GitHub 等）。但产品上线六个月后，用户量还不大，社交登录的需求从未被提出过。如果团队遵循 YAGNI 原则，他们应该先实现简单的邮箱/密码注册，等到确实有用户要求社交登录时再添加。</p></section>
+    <section><h2>起源</h2><p>YAGNI 是极限编程（Extreme Programming, XP）方法论中的一条核心原则，由 Kent Beck 和 Ron Jeffries 等 XP 先驱在 1990 年代末推广开来。它是「简单设计」实践的一部分，与 KISS（保持简单）和 DRY（不要重复自己）等原则相辅相成。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://martinfowler.com/bliki/Yagni.html" target="_blank" rel="noopener">YAGNI on Martin Fowler's website</a> <span>&mdash; 马丁·福勒关于 YAGNI 原则的阐述</span></div><div class="reading-item"><a href="https://amzn.to/4siycbq" target="_blank" rel="noopener">Extreme Programming Installed</a> <span>&mdash; Kent Beck 的经典极限编程著作</span></div><div class="reading-item"><a href="http://wiki.c2.com/?YouArentGonnaNeedIt" target="_blank" rel="noopener">You Aren't Gonna Need It on C2 Wiki</a> <span>&mdash; 关于如何将 XP 实践应用于现代开发的指南</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/kiss-principle/"><strong>KISS（保持简单）</strong><span>设计</span></a><a class="related-card" href="/laws/dry-principle/"><strong>DRY（不要重复自己）</strong><span>设计</span></a><a class="related-card" href="/laws/premature-optimization/"><strong>过早优化（克努斯优化原则）</strong><span>规划</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

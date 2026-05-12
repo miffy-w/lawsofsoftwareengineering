@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="普莱斯定律: 参与者总数的平方根完成了 50% 的工作。">
+<title>普莱斯定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>普莱斯定律</h1>
+      <div class="title-en">Price's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">团队</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>参与者总数的平方根完成了 50% 的工作。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>在任何团队中，一小群高产者通常贡献了大部分产出——这是常态，不是异常。</li><li>管理者应识别并支持高产者，同时确保他们不成为单点故障。</li><li>通过指导、结对编程和文档化，将高产者的知识传播到团队更广的范围。</li><li>不要尝试强制平等产出——而是要帮助每个人发挥最大作用，同时降低单点依赖风险。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/prices-law.png" alt="普莱斯定律" loading="lazy" /><p>德里克·普莱斯（Derek Price）发现，在任何给定领域中，一小部分高产出者贡献了大部分成果。具体而言：如果团队有 N 个人，那么 √N 个人会完成 50% 的工作。这意味着在一个 25 人的团队中，5 个人承担了 50% 的产出；而在 100 人的组织中，仅 10 个人完成了一半的工作。管理者需要意识到这种生产力分布的不均衡性，认识到依赖少数高产出者既是一种优势，也是一种风险——如果这些人离开了会怎样？这需要主动的继任计划和知识传承策略。</p></section>
+    <section><h2>案例</h2><p>在一个 36 人的开发团队中，贡献分析显示约 6 名开发者（√36=6）贡献了所有代码提交的 50%、代码评审的 55% 和设计文档的 60%。这些高产者往往是架构决策的核心，如果失去任何一位，都会显著影响项目进度。</p></section>
+    <section><h2>起源</h2><p>德里克·德索拉·普莱斯（Derek J. de Solla Price）在 1963 年出版的《小科学，大科学》（Little Science, Big Science）一书中观察到学术出版物中的不平等现象，指出一小群高产作者贡献了论文的很大比例。此后，该定律被观察到适用于编程贡献、专利、维基百科编辑等众多领域。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Price%27s_law" target="_blank" rel="noopener">Price's Law - Wikipedia</a> <span>&mdash; 德里克·普莱斯关于科学生产力分布的原始著作</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Derek_J._de_Solla_Price" target="_blank" rel="noopener">Derek J. de Solla Price - Wikipedia</a> <span>&mdash; 关于开源社区中贡献者生产力模式的研究</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/ringelmann-effect/"><strong>林格尔曼效应</strong><span>团队</span></a><a class="related-card" href="/laws/brooks-law/"><strong>布鲁克斯定律</strong><span>团队</span></a><a class="related-card" href="/laws/dunbars-number/"><strong>邓巴数</strong><span>团队</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

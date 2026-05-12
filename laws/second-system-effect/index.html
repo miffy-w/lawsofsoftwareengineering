@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="第二系统效应: 小型成功的系统往往会被过度设计、臃肿的替代品所取代。">
+<title>第二系统效应 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>第二系统效应</h1>
+      <div class="title-en">Second-System Effect</div>
+      <div class="tags-row">
+        <span class="tag tag-group">架构</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>小型成功的系统往往会被过度设计、臃肿的替代品所取代。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>第一个系统成功的原因往往是其简洁和克制——不要在第二个版本中丢掉这个优势。</li><li>设计师在第二个系统中倾向于过度补偿第一个系统中被拒绝的功能，导致臃肿。</li><li>警惕在获得成功后出现的‘把一切加入’的冲动——保持系统简单仍然重要。</li><li>避免第二系统效应的最好方法是持续的自我约束和审视。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/second-system-effect.jpeg" alt="第二系统效应" loading="lazy" /><p>弗雷德·布鲁克斯在《人月神话》中描述了一种反复出现的模式：设计师在完成第一个简洁成功的系统后，在构建第二个系统时，倾向于塞入第一个系统中被省去的所有功能和想法，导致第二个系统过度复杂、臃肿且难以维护。第一个系统的成功正是因为其克制和专注，但设计师在第二次尝试时失去了这种纪律，试图把一切东西都加进去。结果是：第二个系统往往远不如第一个成功，甚至可能彻底失败。避免这一陷阱的方法是保持自我约束，像设计第一个系统那样对功能请求保持克制。</p></section>
+    <section><h2>案例</h2><p>某初创公司用一套简洁的 REST API 取得了初步成功——设计简单、易于理解。团队被授权构建 v2 时，加入了版本控制、自定义内容协商、扩展的元数据、实时 webhook、GraphQL 支持等大量功能。结果 v2 变得如此复杂，以至客户宁愿继续使用功能较少但稳定的 v1。另一个经典案例：OS/360 本应是精简的后续操作系统，却变得极其庞大，而最初简洁的 OS/360 设计正是其成功的原因。</p></section>
+    <section><h2>起源</h2><p>弗雷德·布鲁克斯（Fred Brooks）在《人月神话》（1975 年）中创造了「第二系统效应」这一术语，作为他对 IBM System/360 项目经验的反思之一。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://amzn.to/4b4GU72" target="_blank" rel="noopener">The Mythical Man-Month</a> <span>&mdash; 弗雷德·布鲁克斯的经典软件工程著作</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Second-system_effect" target="_blank" rel="noopener">Second-system effect - Wikipedia</a> <span>&mdash; 关于第二系统效应的详细解释</span></div><div class="reading-item"><a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/" target="_blank" rel="noopener">Things You Should Never Do, Part I</a> <span>&mdash; 雅各布·尼尔森关于框架和设计的权衡</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/yagni/"><strong>YAGNI（你不会需要它）</strong><span>设计</span></a><a class="related-card" href="/laws/galls-law/"><strong>加尔定律</strong><span>架构</span></a><a class="related-card" href="/laws/brooks-law/"><strong>布鲁克斯定律</strong><span>团队</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

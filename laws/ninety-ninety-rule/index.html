@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="九九九规则: 前 90% 的代码占据了前 90% 的开发时间，剩余的 10% 的代码占据另外 90% 的开发时间。">
+<title>九九九规则 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>九九九规则</h1>
+      <div class="title-en">The Ninety-Ninety Rule</div>
+      <div class="tags-row">
+        <span class="tag tag-group">规划</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>前 90% 的代码占据了前 90% 的开发时间，剩余的 10% 的代码占据另外 90% 的开发时间。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>永远不要假设「90% 完成」就意味着接近完成——最后的 10% 往往和前 90% 花一样长的时间。</li><li>尽早处理边界情况和错误处理——把它们放在最后会导致灾难性的延迟。</li><li>向利益相关者沟通进度时不要过度承诺——完成度是非线性的。</li><li>风险管理中为不确定的「打磨」阶段预留充足的时间。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/90-90-rule.png" alt="九九九规则" loading="lazy" /><p>汤姆·卡吉尔（Tom Cargill）在贝尔实验室以黑色幽默的方式指出：开发者和项目经理系统性地低估了完成系统最后 10% 功能所需的时间。处理边界情况、错误条件、集成摩擦、性能调优、UI 细节打磨——这些看似微小的收尾工作，累积起来往往需要与原计划等量甚至更长的时间。这条规则让开发者保持谦逊，提醒他们不要在早期进度顺利时过早宣布胜利：真正难的地方往往在细节之中。</p></section>
+    <section><h2>案例</h2><p>团队宣称在四个星期后功能开发完成了 90%——所有 API 都在工作，UI 也搭建好了。他们向利益相关者宣布还剩最后一周。但接下来的「最后 10%」——错误处理、边界情况、响应式适配、无障碍访问、浏览器兼容性、加载状态、空状态、性能优化、安全审计——花了额外四个星期。项目最终花了两倍于原计划的时间。</p></section>
+    <section><h2>起源</h2><p>汤姆·卡吉尔（Tom Cargill）在贝尔实验室编程时提出了这一观察。乔恩·本特利（Jon Bentley）在 1985 年 9 月《ACM 通讯》的「编程珍珠」专栏中公开引用了这一定律。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://moss.cs.iit.edu/cs100/Bentley_BumperSticker.pdf" target="_blank" rel="noopener">Programming Pearls - Bumper Sticker Computer Science</a> <span>&mdash; 乔恩·本特利引用了该定律的编程珍珠专栏</span></div><div class="reading-item"><a href="https://amzn.to/49bLHkn" target="_blank" rel="noopener">Programming Pearls (Book)</a> <span>&mdash; 关于软件开发中估算和项目管理的实用指南</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Ninety%E2%80%93ninety_rule" target="_blank" rel="noopener">Ninety-Ninety Rule - Wikipedia</a> <span>&mdash; 史蒂夫·麦康奈尔关于软件估算的权威著作</span></div><div class="reading-item"><a href="https://dev.to/ben/identifying-and-mitigating-the-ninety-ninety-rule-in-software-development-4ap3" target="_blank" rel="noopener">Identifying and Mitigating the Ninety-Ninety Rule in Software Development</a> <span>&mdash; Practical strategies for recognizing and countering the ninety-ninety trap</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/hofstadters-law/"><strong>侯世达定律</strong><span>规划</span></a><a class="related-card" href="/laws/parkinsons-law/"><strong>帕金森定律</strong><span>规划</span></a><a class="related-card" href="/laws/pareto-principle/"><strong>帕累托原则（二八法则）</strong><span>决策</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

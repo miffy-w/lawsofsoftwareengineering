@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="第一性原理思维: 将复杂问题分解为最基本的要素，然后从那里重新构建。">
+<title>第一性原理思维 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>第一性原理思维</h1>
+      <div class="title-en">First Principles Thinking</div>
+      <div class="tags-row">
+        <span class="tag tag-group">决策</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>将复杂问题分解为最基本的要素，然后从那里重新构建。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>不要接受既定的问题定义。将问题分解为其部件并质疑假设：它们真的成立，还是只是被接受的标准？一旦掌握了底层需求，你可能会开发出新的解决方案。</li><li>「大家都用框架 Y 做这个」不能成为你做同样选择的理由。第一性原理思维推动你去问为什么人们以某种方式做某件事。</li><li>不要说「这个功能需要 3 个月，因为之前类似的功能就花了那么久」，而是分解功能。从基础出发估算，这有时会揭示「类似」功能有额外的、你可能已经不再面临的复杂因素。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/first-principles-thinking.png" alt="第一性原理思维" loading="lazy" /><p>第一性原理思维是一种解决问题的根本性方法。你不是盲目照搬现有方案（「我们这样做是因为别人也这样做」），而是将问题拆解到最基本的事实，然后从这些基石出发重新构建解决方案。在软件工程中，这意味着不因为「大家都用框架 Y」就选择它，而是追问：我们真正需要解决的问题是什么？最简单的解决方案是什么？现有的方案带来了哪些包袱？这种方法能带来突破性的简化——当我们意识到某个微服务层只是因为我们模仿了另一家公司的架构而存在时，我们可以将其移除，并简化整个系统。</p></section>
+    <section><h2>案例</h2><p>SpaceX 之前，发射火箭成本高昂，因为行业惯例使用昂贵材料且火箭一次性使用。埃隆·马斯克运用第一性原理：火箭是由什么构成的？铝、钛、铜。材料成本仅占火箭总价的 2%。为什么不回收火箭？通过从原材料成本和可重复使用性的基本原理出发，SpaceX 大幅降低了发射成本。在软件中，质疑「为什么这个 API 需要 15 个字段」可以导向更简洁、更易维护的设计。</p></section>
+    <section><h2>起源</h2><p>「第一性原理」一词根植于古典哲学。亚里士多德将第一性原理定义为无法从任何其他事物推导出来的基础命题——知识的基石。在现代工程中，特斯拉和 SpaceX 的埃隆·马斯克普及了这一术语，他将其描述为他解决问题方法的核心。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://fs.blog/first-principles/" target="_blank" rel="noopener">First Principles: The Building Blocks of True Knowledge</a> <span>&mdash; Farnam Street 关于第一性原理思维的全面指南</span></div><div class="reading-item"><a href="https://plato.stanford.edu/entries/aristotle-logic/" target="_blank" rel="noopener">Posterior Analytics - Aristotle</a> <span>&mdash; 斯坦福哲学百科关于亚里士多德基础逻辑的条目</span></div><div class="reading-item"><a href="https://amzn.to/4b9q3Qo" target="_blank" rel="noopener">How to Solve It - George Pólya</a> <span>&mdash; 关于数学问题解决和启发式方法的经典著作</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/occams-razor/"><strong>奥卡姆剃刀</strong><span>决策</span></a><a class="related-card" href="/laws/kiss-principle/"><strong>KISS（保持简单）</strong><span>设计</span></a><a class="related-card" href="/laws/galls-law/"><strong>加尔定律</strong><span>架构</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

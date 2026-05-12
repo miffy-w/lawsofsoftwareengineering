@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="侯世达定律: 事情花费的时间总是比你预期的要长，即使你已经将侯世达定律考虑在内。">
+<title>侯世达定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>侯世达定律</h1>
+      <div class="title-en">Hofstadter's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">规划</span>
+        <span class="tag tag-level">初级</span>
+      </div>
+      <blockquote>事情花费的时间总是比你预期的要长，即使你已经将侯世达定律考虑在内。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>估算即使嵌套多层缓冲也总是过低，因为未知的未知总是存在的。</li><li>不要依赖更激进的缓冲来克服估算偏差——那只会无限扩展。</li><li>更好的方法：快速验证假设，频繁交付小增量，根据真实数据调整估算。</li><li>使用不确定性锥（cone of uncertainty）等模型来沟通估算的范围，而非单一数字。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/hofstadter-law.png" alt="侯世达定律" loading="lazy" /><p>道格拉斯·侯世达（Douglas Hofstadter）这条自指式的幽默法则是关于估算的最深刻洞见之一。它指出：即使你已经知道事情往往比预期要长，并在估算中增加了缓冲，你仍然会低估。因为你增加的缓冲本身也受到同一认知偏差的影响。在软件工程中，我们系统性地低估任务所需时间的原因有很多：未知的未知、意外的技术障碍、被忽略的集成工作——但侯世达定律的核心是元层次的：我们对偏差的纠正也受制于同样的偏差。应对策略不是在估算上疯狂加倍缓冲时间，而是及早验证假设，频繁交付增量，并根据真实数据调整估算。</p></section>
+    <section><h2>案例</h2><p>一位开发者估算某项功能需要 3 天。项目经理知道开发者倾向于乐观估计，所以上报了 5 天。CTO 知道项目经理加了缓冲，所以上报了 8 天。功能最终花了 12 天——因为一个从来没人在启动前注意到的第三方 SDK 兼容性问题。叠加了多层缓冲，仍然低估了，精确印证了侯世达定律。</p></section>
+    <section><h2>起源</h2><p>道格拉斯·侯世达（Douglas Hofstadter）在其 1979 年普利策奖获奖作品《哥德尔、埃舍尔、巴赫：集异璧之大成》中提出了这一定律，最初用于描述计算机下棋领域中的递归低估现象。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://amzn.to/4jjKSLl" target="_blank" rel="noopener">Gödel, Escher, Bach: An Eternal Golden Braid</a> <span>&mdash; 道格拉斯·侯世达关于认知科学和自引用系统的经典著作</span></div><div class="reading-item"><a href="https://amzn.to/49cAqQO" target="_blank" rel="noopener">The Mythical Man-Month</a> <span>&mdash; 关于软件开发中认知偏差和估算陷阱的分析</span></div><div class="reading-item"><a href="https://erikbern.com/2019/04/15/why-software-projects-take-longer-than-you-think-a-statistical-model.html" target="_blank" rel="noopener">Why Software Projects Take Longer Than You Think</a> <span>&mdash; 关于如何利用真实数据进行估算和跟踪的实践指南</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/parkinsons-law/"><strong>帕金森定律</strong><span>规划</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

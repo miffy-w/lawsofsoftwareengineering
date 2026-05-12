@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="墨菲定律: 任何可能出错的事情，最终都会出错。">
+<title>墨菲定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>墨菲定律</h1>
+      <div class="title-en">Murphy's Law / Sod's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">质量</span>
+        <span class="tag tag-level">初级</span>
+      </div>
+      <blockquote>任何可能出错的事情，最终都会出错。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>如果某个错误可能发生，它就一定会发生——在规划和编码时要考虑到这一点，采取防御性策略。</li><li>添加错误处理、备份和检查机制。</li><li>边缘情况在生产环境中必然出现，为这些场景编写测试。</li><li>不要假设「这不太可能发生」——在足够长的时间尺度上，一切可能的事情都会发生。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/murphy-law.png" alt="墨菲定律" loading="lazy" /><p>在软件领域，墨菲定律常被用来解释 bug 和生产事故：代码中任何可能出错的情况（空指针、竞态条件、网络中断）最终都会出现，尤其是在用户基数庞大或最糟糕的时刻。这一定律鼓励开发人员编写更具防御性的代码——检查空值、处理异常、验证输入，并在出错时优雅地降级。它同时也提醒 DevOps 团队通过实施监控、支持回滚和制定应急预案来预判故障。</p></section>
+    <section><h2>案例</h2><p>如果一个网页表单字段可以接受文本，那么必定会有人输入一万个怪异符号来测试边界。如果内存可能会耗尽，那它就会在多个进程恰好对齐时耗尽。一个著名的现实案例是比尔·盖茨在 Windows 98 发布会上的蓝屏死机——如果某个东西可能出故障，它很可能就会在那时出故障。假设一个函数假定输入文件一定存在——墨菲定律说，某一天那个文件会不存在或已损坏，因此你的代码应该处理这种场景。服务器会在你唯一休息的那天崩溃，因为那正是最容易造成麻烦的时刻。</p></section>
+    <section><h2>起源</h2><p>这一定律归功于爱德华·A·墨菲二世（Edward A. Murphy Jr.），他是一位 1949 年从事火箭滑车实验的工程师。该定律首先在航空航天领域流行，随后传播到所有工程领域。在软件领域，它自有 bug 以来就一直存在，时刻提醒着我们：只要有一个未经测试的场景，就会有一个用户发现它。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Murphy%27s_law" target="_blank" rel="noopener">Murphy's Law - Wikipedia</a> <span>&mdash; 这则著名格言的历史与变体</span></div><div class="reading-item"><a href="https://www.youtube.com/watch?v=yeUyxjLhAxU" target="_blank" rel="noopener">Windows 98 Crash During Live Demo</a> <span>&mdash; 比尔·盖茨在 Windows 98 发布会上著名的蓝屏死机视频</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Defensive_programming" target="_blank" rel="noopener">Defensive Programming</a> <span>&mdash; 预测和处理错误的编程实践</span></div><div class="reading-item"><a href="https://www.crowdstrike.com/falcon-content-update-remediation-and-guidance-hub/" target="_blank" rel="noopener">CrowdStrike Channel File 291 RCA Exec Summary</a> <span>&mdash; CrowdStrike 事故的根本原因分析——墨菲定律在大规模场景下的真实案例</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/confirmation-bias/"><strong>确认偏误</strong><span>决策</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

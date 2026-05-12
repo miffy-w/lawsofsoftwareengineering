@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="波斯特尔定律: 在发送时要保守，在接收时要宽容。">
+<title>波斯特尔定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>波斯特尔定律</h1>
+      <div class="title-en">Postel's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">质量</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>在发送时要保守，在接收时要宽容。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>当你的系统向外发送数据时，应严格遵循协议和标准——保守、精确。</li><li>当接收数据时，在可能的情况下处理各种变体或轻微错误，不要因为细小的问题就拒绝通信。</li><li>在现代，过度宽容的接收有时会掩盖错误，因此需要与安全性考量进行平衡。</li><li>这一原则是互联网互操作性的基石——不同的实现能协同工作正是因为双向兼容。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/postels-law.png" alt="波斯特尔定律" loading="lazy" /><p>波斯特尔定律（也称鲁棒性原则）指出：在发送数据时严格遵循规范，但在接收数据时宽容地处理不规范或非常规的输入。这一原则成就了互联网的韧性——不同的实现可以互相通信，因为每一方都力求兼容。在软件设计中，一个健壮的文件读取器可以打开不那么完美的文件，一个宽容的 XML 解析器可能从轻微错误中恢复。然而，过于宽容可能纵容草率的产出者泛滥，在安全上下文中接受畸形输入也可能存在风险。</p></section>
+    <section><h2>案例</h2><p>网页浏览器是波斯特尔定律的绝佳体现——网站上的 HTML 经常格式不规范，但浏览器仍会进行大量的错误纠正和宽容解析来渲染页面。如果浏览器严格对待，半数网页可能无法正常显示。在 API 设计中，如果你的服务接收到一个没有时区信息的时间戳，可以默认假设为 UTC 并尝试解析，而不是直接拒绝——这体现了接收时的宽容。但当你返回数据时，始终包含完整的时区信息，体现输出时的保守和精确。</p></section>
+    <section><h2>起源</h2><p>乔恩·波斯特尔（Jon Postel）在 1980 年的 TCP 规范（RFC 760）中写下了这一原则：「TCP 实现应当遵循一个通用的鲁棒性原则：在发送时要保守，在接收时要宽容。」这后来被称为波斯特尔定律或鲁棒性原则，深刻影响了许多互联网协议的设计。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Robustness_principle" target="_blank" rel="noopener">Robustness Principle - Wikipedia</a> <span>&mdash; 关于波斯特尔定律及其应用的概述</span></div><div class="reading-item"><a href="https://datatracker.ietf.org/doc/html/rfc760" target="_blank" rel="noopener">RFC 760 - DoD Standard Internet Protocol</a> <span>&mdash; 乔恩·波斯特尔阐述这一原则的原始 RFC 760 规范</span></div><div class="reading-item"><a href="https://datatracker.ietf.org/doc/html/draft-thomson-postel-was-wrong-00" target="_blank" rel="noopener">The Harmful Consequences of Postel's Maxim</a> <span>&mdash; 对「过于宽容会造成问题」这一论点的批判性审视</span></div><div class="reading-item"><a href="https://queue.acm.org/detail.cfm?id=1999945" target="_blank" rel="noopener">The Robustness Principle Reconsidered</a> <span>&mdash; 埃里克·奥尔曼在 ACM Queue 上关于宽容接受对安全影响的文章</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/hyrums-law/"><strong>海勒姆定律</strong><span>架构</span></a><a class="related-card" href="/laws/law-of-leaky-abstractions/"><strong>抽象漏洞法则</strong><span>架构</span></a><a class="related-card" href="/laws/fallacies-of-distributed-computing/"><strong>分布式计算谬误</strong><span>架构</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

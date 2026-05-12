@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="彼得原理: 在层级体系中，每个员工都倾向于晋升到自己不能胜任的级别。">
+<title>彼得原理 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>彼得原理</h1>
+      <div class="title-en">Peter Principle</div>
+      <div class="tags-row">
+        <span class="tag tag-group">团队</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>在层级体系中，每个员工都倾向于晋升到自己不能胜任的级别。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>优秀的个人贡献者不一定能成为优秀的管理者——技能组合根本不同。</li><li>组织需要双重职业轨道：管理路线和技术专家（IC）路线。</li><li>晋升奖励的是当下的表现，而不是未来角色所需的潜力——这是组织需要修正的结构性缺陷。</li><li>在评估晋升时，要考察个人是否具备目标角色的胜任能力，而不仅仅是在当前岗位上的成功表现。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/peter-principle.png" alt="彼得原理" loading="lazy" /><p>劳伦斯·彼得（Laurence J. Peter）观察到，在层级组织中，员工因为表现出色而被不断晋升——直到达到一个他们不再胜任的级别。到了这个级别后，他们不再晋升，也就永远留在了自己不胜任的岗位上。在软件工程中这种模式尤其明显：一位优秀的程序员被晋升为团队领导，但如果缺乏领导技能，她可能在这个新角色中挣扎，而组织同时失去了一位优秀的程序员。解决之道在于：提供不依赖管理晋升的职业成长路径（如技术专家轨道），并允许「横向」或「向下」的调动而不附加污名。</p></section>
+    <section><h2>案例</h2><p>一位明星级软件工程师不断晋升，先是高级工程师，然后是技术负责人，接着是工程经理，最后是总监。她在编程和技术设计方面非常出色，但在管理 40 人和处理预算方面非常糟糕。她在总监岗位上很不快乐、效率低下，而组织也失去了一位出色的工程师。如果有平行的 IC 轨道，她本可以继续作为首席工程师发挥最大的价值。</p></section>
+    <section><h2>起源</h2><p>劳伦斯·J·彼得（Laurence J. Peter）和雷蒙德·赫尔（Raymond Hull）在 1969 年的著作《彼得原理》中提出了这一概念，该书成为了管理科学领域的畅销著作。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Peter_principle" target="_blank" rel="noopener">The Peter Principle - Wikipedia</a> <span>&mdash; 劳伦斯·J·彼得的开创性著作</span></div><div class="reading-item"><a href="https://amzn.to/48XHHW7" target="_blank" rel="noopener">The Peter Principle: Why Things Always Go Wrong - Amazon</a> <span>&mdash; 关于科技公司如何管理职业晋升的现代研究</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/dilbert-principle/"><strong>呆伯特原则</strong><span>团队</span></a><a class="related-card" href="/laws/putts-law/"><strong>普特定律</strong><span>团队</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

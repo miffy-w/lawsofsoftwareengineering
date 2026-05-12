@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="吉尔布定律: 任何你需要量化的事物，都可以用某种方式来度量，而且有度量总比没有度量要好。">
+<title>吉尔布定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>吉尔布定律</h1>
+      <div class="title-en">Gilb's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">规划</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>任何你需要量化的事物，都可以用某种方式来度量，而且有度量总比没有度量要好。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>拥有关于某个现象的某些数据或指标，比完全看不见要好，只要你能理解这些指标的局限性。</li><li>与古德哈特定律警告不要误用指标相比，吉尔布定律提醒我们不要完全抛弃度量。</li><li>从一个基本的度量开始，并随着时间推进不断完善它。度量的行为本身就能帮助团队聚焦并识别趋势。</li><li>即便是一个近似或间接的度量，也总比没有更好。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/gilbs-law.png" alt="吉尔布定律" loading="lazy" /><p>汤姆·吉尔布（Tom Gilb）回应了古德哈特定律可能引发的度量瘫痪。该定律主张：即便是近似或间接的度量，也总比完全没有好。当某个方面至关重要（性能、客户满意度、代码可维护性）时，你应当尝试去度量它，否则你将毫无客观反馈可言。吉尔布定律很好地回应了「这个方面是不可度量的，所以我们不去尝试」这种说法。这些度量指标不会完美，但拥有它们能给你带来洞察力和改进的起点，这比完全一无所知要好得多。</p></section>
+    <section><h2>案例</h2><p>度量开发人员生产力是出了名的困难（代码行数是糟糕的代理变量，故事点也可能不一致）。然而，你可以使用部署频率或变更前置时间（如 DORA 指标）作为代理。它们并不能涵盖一切，但能给你提供可行动的数据。如果部署频率下降，管道可能存在某种问题。跟踪技术债务也没有完美的度量方式，但跟踪代码复杂度评分、事故率和开发者调查等指标，能让你获得原本不具备的可见性。</p></section>
+    <section><h2>起源</h2><p>汤姆·吉尔布（Tom Gilb）是一位软件工程顾问和作者，他在量化需求和规划中使用度量的工作中提出了这一定律，与他的 Planguage 和渐进式项目管理方法相辅相成。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Tom_Gilb" target="_blank" rel="noopener">Tom Gilb - Wikipedia</a> <span>&mdash; 汤姆·吉尔布对软件工程贡献的概述</span></div><div class="reading-item"><a href="https://amzn.to/49AqaT1" target="_blank" rel="noopener">Competitive Engineering</a> <span>&mdash; 汤姆·吉尔布关于量化需求与设计的著作</span></div><div class="reading-item"><a href="https://dora.dev/guides/dora-metrics-four-keys/" target="_blank" rel="noopener">DORA Metrics</a> <span>&mdash; 衡量 DevOps 性能的四个关键 DORA 指标</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/goodharts-law/"><strong>古德哈特定律</strong><span>规划</span></a><a class="related-card" href="/laws/parkinsons-law/"><strong>帕金森定律</strong><span>规划</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

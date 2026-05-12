@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="邓巴数: 一个人能够维持稳定社交关系的认知上限约为 150 人。">
+<title>邓巴数 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>邓巴数</h1>
+      <div class="title-en">Dunbar's Number</div>
+      <div class="tags-row">
+        <span class="tag tag-group">团队</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>一个人能够维持稳定社交关系的认知上限约为 150 人。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>团队规模超过约 150 人后，非正式的人际交往将变得不可靠——需要正式的流程和层级。</li><li>将大型组织拆分为小于邓巴数的小团队能改善沟通、信任和协作效率。</li><li>在快速增长的初创公司中，要预见当跨越邓巴数阈值时文化可能发生的改变。</li><li>对于管理者而言，邓巴数提供了一个关于组织规模管理的有用参考框架。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/dunbar-number.png" alt="邓巴数" loading="lazy" /><p>英国人类学家罗宾·邓巴（Robin Dunbar）发现，人类大脑新皮层的大小与社交群体规模之间存在相关性，由此推断出一个人能够维持稳定社交关系的认知上限约为 150 人。在软件工程和组织管理中，邓巴数有重要含义：团队超过 150 人后，成员无法再通过自然的人际交往来了解彼此——正式的管理流程、沟通协议和层级结构变得不可或缺。许多成功的公司（如戈尔公司、早期的 Valve）将团队限制在 150 人以下，当一个单位达到这个规模时就会拆分。在开源社区中，活跃的核心贡献者也往往在邓巴数范围内。</p></section>
+    <section><h2>案例</h2><p>一家快速成长的初创公司发现，120 人左右时团队沟通顺畅自然，大家彼此认识。但当员工超过 160 人后，人们开始抱怨「不知道谁在做什么」，跨团队的误解增多。公司随后被重组为更小的部门，每个部门少于 100 人。另一个例子：戈尔公司（W.L. Gore &amp; Associates）刻意将每个工厂或办公室限制在约 150 人，以保持非正式沟通和社会凝聚力。</p></section>
+    <section><h2>起源</h2><p>罗宾·邓巴（Robin Dunbar）在 1992 年发表于《人类进化杂志》（Journal of Human Evolution）的论文中提出了这一数字。该理论现已成为心理学、社会学和人类学的基础概念，也被广泛应用于组织管理和团队建设策略。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Dunbar%27s_number" target="_blank" rel="noopener">Dunbar's Number - Wikipedia</a> <span>&mdash; 罗宾·邓巴关于社交群体规模与认知关系的原始研究论文</span></div><div class="reading-item"><a href="https://www.amazon.com/Grooming-Gossip-Evolution-Language-Dunbar/dp/0674363361" target="_blank" rel="noopener">Grooming, Gossip, and the Evolution of Language</a> <span>&mdash; 哈佛商业评论关于如何组织快速成长的团队</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/conways-law/"><strong>康威定律</strong><span>团队</span></a><a class="related-card" href="/laws/brooks-law/"><strong>布鲁克斯定律</strong><span>团队</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

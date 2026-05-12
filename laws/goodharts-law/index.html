@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="古德哈特定律: 当一个度量指标变成了目标，它就不再是一个好的度量指标。">
+<title>古德哈特定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>古德哈特定律</h1>
+      <div class="title-en">Goodhart's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">规划</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>当一个度量指标变成了目标，它就不再是一个好的度量指标。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>当一个指标被用作目标时，它就会被游戏化，不再有意义地衡量它本应衡量的东西。</li><li>将指标与激励脱钩——指标用于洞察和自我改进，不要用于绩效评估或奖金。</li><li>使用定性评估和多维度指标组合，而非任何单一数字来评估团队表现。</li><li>定期审视你的指标——问问它们是否仍在提供有意义的信息，还是已经被无意识优化。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/goodharts-law.png" alt="古德哈特定律" loading="lazy" /><p>经济学家查尔斯·古德哈特（Charles Goodhart）观察到，一旦一个统计指标被用于政策目标，它就开始失去作为衡量标准的能力——因为人们会开始游戏这个指标，而不再尝试实现它本应衡量的底层结果。在软件工程中这尤其危险：当开发者被告知他们的表现将通过代码行数、提交次数、修复 bug 数量或故事点数来衡量时，他们会优化这些指标（写更多行、拆分为多个提交、修复表面 bug 而忽略底层架构问题），而非提升真正的工程质量和业务价值。好的度量指标应作为团队对话和自我改进的参考工具，而非个人奖惩的依据。</p></section>
+    <section><h2>案例</h2><p>一家公司开始用已解决的 JIRA 工单数量来评估开发者。很快，开发者开始只接简单的工单和琐碎的 bug，避免复杂的架构改进（这些不能轻易体现为高工单数）。工单关闭数飙升，但产品质量下滑——因为没人愿意花时间做根本性的重构。另一团队被要求达到高测试覆盖率——他们便开始写大量测试了 getter/setter 的测试，将覆盖率推至 95%，但没有任何有意义的业务逻辑被真正验证。</p></section>
+    <section><h2>起源</h2><p>查尔斯·古德哈特（Charles Goodhart）在 1975 年发表这篇论文时是英格兰银行的首席经济顾问。他提出的最初形式针对宏观经济政策制定，但此后该定律在从教育、医疗到软件工程的各种人类系统中被反复印证。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://coffeeandjunk.com/goodharts-campbells-law/" target="_blank" rel="noopener">Goodhart's Law: How Measuring The Wrong Things Drive Immoral Behaviour</a> <span>&mdash; 查尔斯·古德哈特关于货币政策和指标局限性的原始论文</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Goodhart%27s_law" target="_blank" rel="noopener">Goodhart's Law - Wikipedia</a> <span>&mdash; 关于如何在不产生负面激励的前提下使用工程指标</span></div><div class="reading-item"><a href="https://amzn.to/4ji7rzY" target="_blank" rel="noopener">The Tyranny of Metrics</a> <span>&mdash; 关于指标驱动管理中的陷阱和应对策略</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Enshittification" target="_blank" rel="noopener">Enshittification - Wikipedia</a> <span>&mdash; How platforms degrade quality once metrics replace user value as the goal</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/dilbert-principle/"><strong>呆伯特原则</strong><span>团队</span></a><a class="related-card" href="/laws/parkinsons-law/"><strong>帕金森定律</strong><span>规划</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

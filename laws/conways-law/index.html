@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="康威定律: 组织设计的系统会镜像其自身的沟通结构。">
+<title>康威定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>康威定律</h1>
+      <div class="title-en">Conway's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">团队</span>
+        <span class="tag tag-level senior">高级</span>
+      </div>
+      <blockquote>组织设计的系统会镜像其自身的沟通结构。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>软件系统的架构通常反映公司的组织架构或团队结构。</li><li>如果公司以孤岛方式组织，就可能产出沟通不畅的孤岛式软件模块。</li><li>要实现期望的软件架构（如微服务），可能需要先重组团队，因为团队会按照其沟通路径来构建软件。</li><li>在项目启动时，要意识到团队的划分方式很可能会导致软件边界出现在同样的位置。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/conways-law.png" alt="康威定律" loading="lazy" /><p>康威定律指出，软件系统会反映构建它的组织的沟通结构。一家将前端、后端和数据库部门分开的公司，极有可能产出一个三层架构的系统。小型分布式团队倾向于产生模块化的服务架构，而大型集中式团队则倾向于构建单体系统。为了缓解这一问题，团队可以采用「逆康威策略」：有意识地按照期望的软件架构来调整组织结构。</p></section>
+    <section><h2>案例</h2><p>某家公司拥有独立的前端、后端和数据库部门。他们构建的软件呈现三层架构，每一层由各自部门独立设计。由于团队之间目标不一致，层级之间的集成非常痛苦。亚马逊以组织「双披萨团队」而闻名，每个团队负责一个特定的服务。康威定律表明，这正是亚马逊采用面向服务架构的原因，各服务之间有清晰的 API 契约。</p></section>
+    <section><h2>起源</h2><p>梅尔文·康威（Melvin Conway）在 1967 年的论文《委员会如何发明？》中提出了这一想法。《哈佛商业评论》因缺乏形式化证明而拒绝发表，随后《Datamation》于 1968 年发表了该论文。弗雷德·布鲁克斯（Fred Brooks）后来在《人月神话》中将其命名为「康威定律」，使其成为软件工程领域的基础概念。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://www.melconway.com/Home/Committees_Paper.html" target="_blank" rel="noopener">How Do Committees Invent?</a> <span>&mdash; 梅尔文·康威 1968 年的原始论文</span></div><div class="reading-item"><a href="https://martinfowler.com/bliki/ConwaysLaw.html" target="_blank" rel="noopener">Conway's Law</a> <span>&mdash; 马丁·福勒（Martin Fowler）对康威定律的解读</span></div><div class="reading-item"><a href="https://engineering.atspotify.com/2014/3/spotify-engineering-culture-part-1" target="_blank" rel="noopener">Spotify Engineering Culture</a> <span>&mdash; Spotify 工程文化原始博客文章</span></div><div class="reading-item"><a href="https://amzn.to/4jgRZ6V" target="_blank" rel="noopener">Team Topologies</a> <span>&mdash; 康威定律在现代组织设计中的应用</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/brooks-law/"><strong>布鲁克斯定律</strong><span>团队</span></a><a class="related-card" href="/laws/galls-law/"><strong>加尔定律</strong><span>架构</span></a><a class="related-card" href="/laws/law-of-leaky-abstractions/"><strong>抽象漏洞法则</strong><span>架构</span></a><a class="related-card" href="/laws/hyrums-law/"><strong>海勒姆定律</strong><span>架构</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

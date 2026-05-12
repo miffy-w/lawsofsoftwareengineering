@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="炒作周期与阿马拉定律: 我们倾向于高估技术的短期影响，而低估其长期影响。">
+<title>炒作周期与阿马拉定律 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>炒作周期与阿马拉定律</h1>
+      <div class="title-en">The Hype Cycle &amp; Amara's Law</div>
+      <div class="tags-row">
+        <span class="tag tag-group">决策</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>我们倾向于高估技术的短期影响，而低估其长期影响。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>早期，人们高估技术在短期内能做什么，导致不切实际的期望。</li><li>在更长的时间尺度上，同一技术的真正潜力会显现出来，通常远超最初的想象。阿马拉定律提醒我们，我们倾向于低估重大创新的长期影响。</li><li>对于开发者和技术领导者来说，这意味着不要被炒作周期裹挟。保持耐心，根据经过验证的价值来评估新工具，而非仅仅看热度。</li><li>将创新视为有限的预算。好的团队将稳定、经过验证的技术用于大多数需求，只有在新炒作技术真正解决实际问题时才采用。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/gartner-cycle.png" alt="炒作周期与阿马拉定律" loading="lazy" /><p>这一法则描述了科技领域熟悉的繁荣-泡沫-萧条周期。高德纳的炒作周期捕捉了这一模式：新技术引发夸大期望，在现实不够美好时跌入幻灭低谷，然后在真正有用的地方慢慢爬上生产力高原。阿马拉定律补充说：我们几乎总是高估短期影响（以为革命就在明天），并低估长期影响（几十年后它真的改变了世界）。对软件工程师来说，这意味着不要被每一波新的炒作浪潮冲昏头脑。在评估新技术时，问自己：它解决了什么实际问题？成熟度和社区生态如何？同时，也不要在长期内忽视真正的变革——互联网、开源和云计算都遵循了这一模式。</p></section>
+    <section><h2>案例</h2><p>AI 在 1960-70 年代经历了第一次大的炒作浪潮，当时人们认为通用 AI 指日可待。当宏大的承诺没有兑现时，「AI 寒冬」降临，许多人将 AI 作为理论幻想而放弃——然而几十年后，机器学习和 LLM 确确实实改变了世界。类似地，NoSQL 运动一度宣称「SQL 已死」，但事后看来，NoSQL 有它的用武之地，而关系型数据库仍然健在且至关重要。</p></section>
+    <section><h2>起源</h2><p>阿马拉定律以罗伊·阿马拉（Roy Amara）命名，他是一位美国研究员和未来学家，曾任未来研究所主席。他观察到人们倾向于在短期内高估技术，而在长期内低估它。高德纳炒作周期由高德纳咨询公司开发，作为描述新兴技术成熟度曲线的可视化框架。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://www.gartner.com/en/research/methodologies/gartner-hype-cycle" target="_blank" rel="noopener">Gartner Hype Cycle</a> <span>&mdash; Gartner 对炒作周期方法论的官方解释</span></div><div class="reading-item"><a href="https://www.iftf.org/" target="_blank" rel="noopener">Institute for the Future</a> <span>&mdash; Roy Amara 领导的专注于未来思维和预见性的组织</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/goodharts-law/"><strong>古德哈特定律</strong><span>规划</span></a><a class="related-card" href="/laws/galls-law/"><strong>加尔定律</strong><span>架构</span></a><a class="related-card" href="/laws/second-system-effect/"><strong>第二系统效应</strong><span>架构</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

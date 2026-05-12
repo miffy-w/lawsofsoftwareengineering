@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="确认偏误: 倾向于偏好支持我们已有信念或想法的信息。">
+<title>确认偏误 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>确认偏误</h1>
+      <div class="title-en">Confirmation Bias</div>
+      <div class="tags-row">
+        <span class="tag tag-group">决策</span>
+        <span class="tag tag-level mid">中级</span>
+      </div>
+      <blockquote>倾向于偏好支持我们已有信念或想法的信息。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>在代码审查或调试时，注意自己是否只寻找支持最初猜测的证据。</li><li>在积极思考问题时挑战自己。如果你对一个问题有看法，试着问：「如果我错了，我预期会看到什么？」这样我们才能对抗只确认的自然偏差。</li><li>在团队决策中（例如技术栈和/或设计决策），寻求持不同意见的人的输入。确认偏误可以通过审视替代方案来克服。例如，如果整个团队都「感觉」技术 X 是最佳选择，指派某人去研究反对技术 X 的观点。</li><li>基于客观标准（事实，而非观点）做决策。自动化测试、性能指标和实验（A/B 测试）可以给出不受人类偏差影响的真相。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/confirmation-bias.png" alt="确认偏误" loading="lazy" /><p>我们都喜欢自己是正确的。确认偏误是我们大脑为了让自己更频繁地感觉正确而采取的欺骗方式。心理上，一旦我们形成某种观点，就会下意识地过滤信息：注意到支持它的证据，忽略或贬低与之矛盾的证据。在软件工程中，它几乎无处不在。调试时，你「知道」bug 在哪里，于是只寻找支持该假设的证据，忽略了指向其他地方的线索。代码审查时，你信任一位同事所以略过了潜在问题，或者你对某个模式有偏见所以过度审视。架构决策时，你只谷歌支持你首选方案的博客文章。确认偏误让我们看不到比自己愿意承认的更多的东西。</p></section>
+    <section><h2>案例</h2><p>在代码审查中，信任同事技能的审查者可能会略过潜在问题，假设代码应该是好的。反过来的情况：预期初级开发者写出糟糕代码的审查者，会在完全正常的代码中找到「问题」来确认自己的偏见。调试时，你「知道」是缓存层的问题，花了几个小时只检查缓存代码——忽略了数据库中一个简单的错误配置，因为它不符合你的理论。</p></section>
+    <section><h2>起源</h2><p>最早识别确认偏误的人之一是彼得·卡思卡特·韦森（Peter Cathcart Wason），一位英国认知心理学家。1960 年，他进行了一项著名的实验（韦森规则发现任务），参与者在其中表现出强烈的倾向于寻找确认自己假设的信息，而非试图证伪它们，这违背了合理的科学推理原则。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://journals.sagepub.com/doi/10.1037/1089-2680.2.2.175" target="_blank" rel="noopener">Confirmation Bias: A Ubiquitous Phenomenon in Many Guises</a> <span>&mdash; Raymond Nickerson 1998 年关于确认偏误研究的全面综述</span></div><div class="reading-item"><a href="https://www.tandfonline.com/doi/abs/10.1080/17470216008416717" target="_blank" rel="noopener">On the Failure to Eliminate Hypotheses in a Conceptual Task</a> <span>&mdash; Peter Wason 1960 年关于规则发现任务的奠基性论文</span></div><div class="reading-item"><a href="https://amzn.to/48WboH0" target="_blank" rel="noopener">Thinking, Fast and Slow</a> <span>&mdash; Daniel Kahneman 对包括确认偏误在内的认知偏差的探索</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/dunning-kruger-effect/"><strong>邓宁-克鲁格效应</strong><span>决策</span></a><a class="related-card" href="/laws/hanlons-razor/"><strong>汉隆剃刀</strong><span>决策</span></a><a class="related-card" href="/laws/goodharts-law/"><strong>古德哈特定律</strong><span>规划</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>

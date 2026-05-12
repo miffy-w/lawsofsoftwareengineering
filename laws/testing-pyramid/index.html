@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="测试金字塔: 一个项目应当有大量快速的单元测试，较少的集成测试，以及极少量的 UI 测试。">
+<title>测试金字塔 — 软件工程法则</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    background: #f8f9fa; color: #1a1a2e; line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav { padding: 24px 0; }
+  nav a { color: #2563eb; text-decoration: none; font-size: 0.925rem; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+  .article-header { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px; margin-bottom: 24px; }
+  .article-header h1 { font-size: 1.75rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .article-header .title-en { font-size: 1rem; color: #9ca3af; margin-bottom: 16px; }
+  .article-header blockquote {
+    border-left: 4px solid #2563eb; padding: 12px 20px; margin-top: 16px;
+    background: #f0f4ff; border-radius: 0 8px 8px 0; font-size: 1.05rem;
+    font-weight: 500; color: #1e40af; font-style: italic;
+  }
+  .tags-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+  .tag-group { background: #eff6ff; color: #2563eb; }
+  .tag-level { background: #f0fdf4; color: #16a34a; }
+  .tag-level.mid { background: #fefce8; color: #ca8a04; }
+  .tag-level.senior { background: #fef2f2; color: #dc2626; }
+  section { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 28px 32px; margin-bottom: 20px; }
+  section h2 { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #f3f4f6; }
+  section p { margin-bottom: 12px; color: #374151; }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; }
+  section li { margin-bottom: 8px; color: #374151; }
+  section li:last-child { margin-bottom: 0; }
+  section img { max-width: 100%; border-radius: 8px; margin: 12px 0; }
+  .reading-item { margin-bottom: 10px; }
+  .reading-item a { color: #2563eb; text-decoration: none; font-weight: 500; }
+  .reading-item a:hover { text-decoration: underline; }
+  .reading-item span { color: #6b7280; font-size: 0.9rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .related-card {
+    display: block; padding: 14px 16px; border: 1px solid #e5e7eb; border-radius: 8px;
+    text-decoration: none; color: inherit; transition: all 0.15s ease;
+  }
+  .related-card:hover { border-color: #2563eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .related-card strong { display: block; font-size: 0.925rem; color: #111827; margin-bottom: 2px; }
+  .related-card span { font-size: 0.8rem; color: #6b7280; }
+  footer { text-align: center; padding: 32px 20px; font-size: 0.85rem; color: #9ca3af; }
+  footer a { color: #2563eb; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .article-header { padding: 20px; }
+    .article-header h1 { font-size: 1.4rem; }
+    section { padding: 20px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav><a href="/index.html">&larr; 返回列表</a></nav>
+  <article>
+    <div class="article-header">
+      <h1>测试金字塔</h1>
+      <div class="title-en">Testing Pyramid</div>
+      <div class="tags-row">
+        <span class="tag tag-group">质量</span>
+        <span class="tag tag-level">初级</span>
+      </div>
+      <blockquote>一个项目应当有大量快速的单元测试，较少的集成测试，以及极少量的 UI 测试。</blockquote>
+    </div>
+    <section><h2>要点总结</h2><ul><li>单元测试是基础——它们作为独立函数运行，执行速度很快，可以承担大量编写成本。</li><li>集成测试验证模块之间的协作——你需要比单元测试更少的集成测试。</li><li>端到端测试模拟真实用户场景——必不可少但运行缓慢且维护成本高。</li><li>以金字塔方式组织测试能获得快速反馈（大多数测试是快速的单元测试），UI 测试失败时更有可能是由真正的问题引起的。</li></ul></section>
+    <section><h2>概述</h2><img src="/images/laws/testing-pyramid.png" alt="测试金字塔" loading="lazy" /><p>测试金字塔是一个视觉隐喻：最庞大的层级（底部）是单元测试，它们运行最快且数量最多。中间层是集成测试，数量较少。顶部是 UI/端到端测试，数量最少。越往上，测试在时间、精力和脆弱性方面就越昂贵，因此你应当让它们的数量相应减少。遵循金字塔模型，大多数 bug 会在最廉价的层级被捕获。如果金字塔倒置（大量端到端测试，很少的单元测试），测试套件往往是缓慢且脆弱的，开发人员获得反馈的延迟也会很长。</p></section>
+    <section><h2>案例</h2><p>一个电商 Web 应用遵循测试金字塔：团队为价格计算、折扣逻辑和验证函数编写大量单元测试（数百个）。他们还编写 API 集成测试验证订单创建是否正确连接了库存、支付和通知服务（数十个）。最后，有几个端到端测试模拟完整用户旅程（浏览、加入购物车、结账）。由于单元测试数量众多，业务逻辑问题会在端到端测试运行之前就被发现。CI 中耗时很少，支持自信部署。反之，如果一个团队单元测试很少而依赖 50 个端到端 GUI 测试每晚运行数小时——测试失败时很难判断是真正的 bug 还是测试的不稳定性。</p></section>
+    <section><h2>起源</h2><p>迈克·科恩（Mike Cohn）因推广测试金字塔而闻名。他在著作《Succeeding with Agile》和 2009 年左右的博文中描述了这个概念，创造了术语和概念。该思想建立在更早期的测试理论之上（如 ISTQB 基础中的测试层级，或 TDD 中编写大量单元测试的通用实践）。</p></section>
+    <section><h2>参考阅读</h2><div class="reading-item"><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener">The Practical Test Pyramid</a> <span>&mdash; 马丁·福勒关于测试金字塔的全面指南</span></div><div class="reading-item"><a href="https://amzn.to/4pb7Q8v" target="_blank" rel="noopener">Succeeding with Agile</a> <span>&mdash; 迈克·科恩推广测试金字塔概念的著作</span></div><div class="reading-item"><a href="https://en.wikipedia.org/wiki/Test_automation#Testing_at_different_levels" target="_blank" rel="noopener">Test Pyramid - Wikipedia</a> <span>&mdash; 关于不同层级测试自动化的概述</span></div><div class="reading-item"><a href="https://abseil.io/resources/swe-book/html/ch11.html" target="_blank" rel="noopener">Software Engineering at Google, Chapter 11: Testing Overview</a> <span>&mdash; 《Google 软件工程》第 11 章——关于 Google 测试哲学与实践</span></div></section>
+    <section><h2>相关法则</h2><div class="related-grid"><a class="related-card" href="/laws/lehmans-laws/"><strong>莱曼软件演化定律</strong><span>质量</span></a></div></section>
+  </article>
+  <footer>
+    <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+  </footer>
+</div>
+</body>
+</html>
