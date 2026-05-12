@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="软件工程法则 — 塑造软件系统、团队和决策的原则与模式。56 条经典软件工程法则的中文翻译。">
+<meta property="og:title" content="软件工程法则">
+<meta property="og:description" content="塑造软件系统、团队和决策的原则与模式 — 56 条经典软件工程法则的中文翻译">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lawsofsoftwareengineering.vaste.top">
+<meta name="twitter:card" content="summary">
 <title>软件工程法则</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -118,6 +123,8 @@
   });
 })();
 
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
 function renderCards(filtered) {
   var container = document.getElementById('cards-container');
   var empty = document.getElementById('empty-state');
@@ -130,13 +137,13 @@ function renderCards(filtered) {
   filtered.forEach(function(law) {
     var levelClass = law.experience === 'senior' ? 'senior' : (law.experience === 'mid' ? 'mid' : '');
     var html =
-      '<a class="card" href="/laws/' + law.slug + '/">' +
-        '<div class="card-title">' + law.title + '</div>' +
-        '<div class="card-title-en">' + law.titleEn + '</div>' +
-        '<div class="card-desc">' + law.description + '</div>' +
+      '<a class="card" href="/laws/' + esc(law.slug) + '/">' +
+        '<div class="card-title">' + esc(law.title) + '</div>' +
+        '<div class="card-title-en">' + esc(law.titleEn) + '</div>' +
+        '<div class="card-desc">' + esc(law.description) + '</div>' +
         '<div class="card-tags">' +
-          '<span class="tag tag-group">' + (GROUP_MAP[law.group] || law.group) + '</span>' +
-          '<span class="tag tag-level' + (levelClass ? ' ' + levelClass : '') + '">' + (LEVEL_MAP[law.experience] || law.experience) + '</span>' +
+          '<span class="tag tag-group">' + esc(GROUP_MAP[law.group] || law.group) + '</span>' +
+          '<span class="tag tag-level' + (levelClass ? ' ' + levelClass : '') + '">' + esc(LEVEL_MAP[law.experience] || law.experience) + '</span>' +
         '</div>' +
       '</a>';
     container.insertAdjacentHTML('beforeend', html);

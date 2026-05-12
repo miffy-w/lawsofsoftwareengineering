@@ -178,7 +178,7 @@ const LAWS = [
       {
         "title": "Code Complete",
         "url": "https://amzn.to/3N57T8t",
-        "description": "Steve McConnell's comprehensive guide to software construction"
+        "description": "Steve McConnell 的软件构建综合指南"
       }
     ]
   },
@@ -392,7 +392,7 @@ const LAWS = [
       {
         "title": "Law of Conservation of Complexity (Wikipedia)",
         "url": "https://en.wikipedia.org/wiki/Law_of_conservation_of_complexity",
-        "description": "Wikipedia article on Tesler's Law"
+        "description": "维基百科关于泰斯勒定律的文章"
       }
     ]
   },
@@ -421,27 +421,27 @@ const LAWS = [
       {
         "title": "Brewer's CAP Theorem",
         "url": "https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/",
-        "description": "Eric Brewer 关于 CAP 定理的综述文章"
+        "description": "Eric Brewer 关于 CAP 定理的回顾"
       },
       {
         "title": "CAP Twelve Years Later: How the 'Rules' Have Changed",
         "url": "https://sites.cs.ucsb.edu/~rich/class/cs293b-cloud/papers/brewer-cap.pdf",
-        "description": "分布式计算基础教材"
+        "description": "Brewer 2012 年 IEEE 论文：CAP 定理再审视"
       },
       {
         "title": "Gilbert & Lynch 2002 Paper",
         "url": "https://groups.csail.mit.edu/tds/papers/Gilbert/Brewer2.pdf",
-        "description": "Martin Kleppmann 关于分布式系统的权威著作"
+        "description": "CAP 定理的形式化证明论文"
       },
       {
         "title": "Designing Data-Intensive Applications",
         "url": "https://amzn.to/4pVAwU5",
-        "description": "Martin Kleppmann's comprehensive guide covering CAP and distributed systems"
+        "description": "Martin Kleppmann 关于分布式系统的权威著作"
       },
       {
         "title": "A Critique of the CAP Theorem",
         "url": "https://www.cl.cam.ac.uk/research/dtg/archived/files/publications/public/mk428/cap-critique.pdf",
-        "description": "Martin Kleppmann's 2015 paper arguing the theorem's definitions are ambiguous"
+        "description": "Martin Kleppmann 对 CAP 定理定义模糊性的批评"
       }
     ]
   },
@@ -517,22 +517,22 @@ const LAWS = [
       {
         "title": "Fallacies of Distributed Computing Explained",
         "url": "https://www.rgoarchitects.com/Files/fallacies.pdf",
-        "description": "马特·克莱因关于分布式计算的思考"
+        "description": "Arnon Rotem-Gal-Oz 对各条谬误的详细解析"
       },
       {
         "title": "The Eight Fallacies of Distributed Computing",
         "url": "https://nighthacks.com/jag/res/Fallacies.html",
-        "description": "AWS 关于在云环境中构建分布式系统的指南"
+        "description": "James Gosling 关于分布式计算谬误的文章"
       },
       {
         "title": "Designing Data-Intensive Applications",
         "url": "https://amzn.to/4pVAwU5",
-        "description": "Martin Kleppmann's book addressing all eight fallacies in depth"
+        "description": "Martin Kleppmann 深入探讨分布式系统谬误的著作"
       },
       {
         "title": "Foraging for the Fallacies of Distributed Computing",
         "url": "https://medium.com/baseds/foraging-for-the-fallacies-of-distributed-computing-part-1-1b35c3b85b53",
-        "description": "Vaidehi Joshi's accessible explanation of each fallacy"
+        "description": "Vaidehi Joshi 对各条谬误的通俗解析"
       }
     ]
   },
@@ -1913,22 +1913,22 @@ const LAWS = [
       {
         "title": "Dunning-Kruger Effect - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect",
-        "description": "邓宁和克鲁格 1999 年的原始研究论文"
+        "description": "维基百科关于这一认知偏差的全面概述"
       },
       {
         "title": "Unskilled and Unaware of It - Original 1999 Paper",
         "url": "https://psycnet.apa.org/doi/10.1037/0022-3514.77.6.1121",
-        "description": "以图解方式解释这一效应的文章"
+        "description": "邓宁和克鲁格 1999 年的原始研究论文"
       },
       {
         "title": "We Are All Confident Idiots - David Dunning",
         "url": "https://psmag.com/social-justice/confident-idiots-92793",
-        "description": "关于这一偏差如何在软件工程中产生影响的分析"
+        "description": "David Dunning 对这一效应的通俗解读"
       },
       {
         "title": "Thinking, Fast and Slow",
         "url": "https://amzn.to/48WboH0",
-        "description": "Daniel Kahneman's seminal book on cognitive biases and decision-making"
+        "description": "Daniel Kahneman 关于认知偏差的开创性著作"
       }
     ]
   },
