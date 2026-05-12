@@ -129,7 +129,7 @@ function buildLaw(law, allLaws) {
       <blockquote>${esc(desc)}</blockquote>
     </div>
     ${takeawaysHtml}
-    <section><h2>概述</h2>${law.image ? '<img src="' + esc(law.image) + '" alt="' + esc(title) + '" loading="lazy" />' : ''}<p>${esc(overview)}</p></section>
+    <section><h2>概述</h2>${law.image ? '<img src="https://lawsofsoftwareengineering.com' + esc(law.image) + '" alt="' + esc(title) + '" loading="lazy" />' : ''}<p>${esc(overview)}</p></section>
     <section><h2>案例</h2><p>${esc(examples)}</p></section>
     <section><h2>起源</h2><p>${esc(origins)}</p></section>
     ${readingHtml}
