@@ -99,7 +99,7 @@ document.documentElement.setAttribute('data-theme',t);})();
   </article>
   <footer>
     <p>&copy; 2026 <a href="https://lawsofsoftwareengineering.com/" target="_blank" rel="noopener">Dr. Milan Milanovi&cacute;</a></p>
-    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可</p>
+    <p>中文翻译 &middot; 内容基于 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> 许可 &middot; <a href="https://github.com/miffy-w/lawsofsoftwareengineering" target="_blank" rel="noopener">GitHub</a></p>
   </footer>
 </div>
 <script>
