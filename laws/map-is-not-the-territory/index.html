@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="地图不等于疆域: 我们对现实的表示不等于现实本身。">
+<meta name="description" content="地图不等于疆域: 我们对现实的表述不等于现实本身。">
 <meta property="og:title" content="地图不等于疆域 — 软件工程法则">
-<meta property="og:description" content="我们对现实的表示不等于现实本身。">
+<meta property="og:description" content="我们对现实的表述不等于现实本身。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://lawsofsoftwareengineering.vaste.top/laws/map-is-not-the-territory/">
 <meta property="og:image" content="https://lawsofsoftwareengineering.com/images/laws/map-is-not-territory.png">
@@ -33,7 +33,7 @@ document.documentElement.setAttribute('data-theme',t);})();
         <span class="tag tag-group">决策</span>
         <span class="tag tag-level mid">中级</span>
       </div>
-      <blockquote>我们对现实的表示不等于现实本身。</blockquote>
+      <blockquote>我们对现实的表述不等于现实本身。</blockquote>
     </div>
     <section><h2>要点总结</h2><ul><li>设计文档、UML 图和架构示意图是抽象。不要把蓝图与运行中的实际软件混为一谈。</li><li>实现系统时，预料到会出现初始设计中未曾捕捉到的意外因素。准备好根据开发和测试中发现的新「地形」来调整计划。</li><li>模型和设计对指导开发很有价值，但要始终愿意在来自真实系统的证据与模型矛盾时质疑假设。</li></ul></section>
     <section><h2>概述</h2><img src="https://lawsofsoftwareengineering.com/images/laws/map-is-not-territory.png" alt="地图不等于疆域" loading="lazy" /><p>「地图不等于疆域」是一个源自普通语义学的思维模型。它揭示了一个核心洞见：我们对事物的感知或概念模型并非事物本身。在软件工程中，这意味着设计文档、UML 图、架构示意图都是抽象，不是运行中的真实系统。一个微服务架构图显示服务 A 通过 Kafka 与 B、C 通信——这幅图假设「网络是可靠的」「延迟可以忽略」，但在云基础设施中，网络分区、超时和重试才是现实。数据模型不等于真实的用户行为。用户故事不等于用户实际如何与产品交互。模型是有用的指引，但当来自真实系统的证据与模型矛盾时，永远要相信真实系统。</p></section>

@@ -11,7 +11,7 @@ const LAWS = [
     "title": "康威定律",
     "titleEn": "Conway's Law",
     "slug": "conways-law",
-    "description": "组织设计的系统会镜像其自身的沟通结构。",
+    "description": "组织所设计的系统会反映其自身的沟通结构。",
     "descriptionEn": "Organizations design systems that mirror their own communication structure.",
     "experience": "senior",
     "group": "Teams",
@@ -101,12 +101,12 @@ const LAWS = [
     "title": "海勒姆定律",
     "titleEn": "Hyrum's Law",
     "slug": "hyrums-law",
-    "description": "当 API 的用户数量足够多时，你系统的所有可观察行为都会被某些人所依赖。",
+    "description": "当 API 的用户数量足够多时，系统中所有可观察到的行为最终都会被某些人所依赖。",
     "descriptionEn": "With a sufficient number of API users, all observable behaviors of your system will be depended on by somebody.",
     "experience": "senior",
     "group": "Architecture",
     "image": "/images/laws/hyrums-law.png",
-    "overview": "海勒姆定律由 Google 工程师海勒姆·赖特（Hyrum Wright）提出并广为流传。核心观点是：即使你的 API 文档明确规定了契约，在有足够多用户的情况下，系统所有可观察到的行为——包括 bug、实现细节、未记录的副作用——最终都会被某些人所依赖。这意味着任何对系统行为的更改，无论多么微小或看似安全，都可能破坏某些用户的功能。该定律深刻影响了 API 设计与向后兼容性策略：不能仅依赖文档来保护用户，还要考虑实际行为。",
+    "overview": "海勒姆定律由 Google 工程师海勒姆·赖特（Hyrum Wright）提出并广为流传。核心观点是：即使你的 API 文档明确规定了契约，当用户数量足够多时，系统所有可观察到的行为——包括 bug、实现细节、未记录的副作用——最终都会被某些人所依赖。这意味着任何对系统行为的更改，无论多么微小或看似无害，都可能破坏某些用户的功能。该定律深刻影响了 API 设计与向后兼容性策略：不能仅依赖文档化契约来保护用户，还要考虑实际可观察到的行为。",
     "examples": "一个库的排序函数在文档中未承诺特定的排序顺序，但实现恰好使用了稳定排序。成千上万的开发者不知不觉地依赖了这一行为。当新版本切换为更快的非稳定排序算法时，大量应用出现故障。另一个例子：某个 REST API 返回的 JSON 字段顺序虽未在文档中承诺，但客户端代码通过字段位置而非字段名来解析，导致 API 调整字段顺序后客户端崩溃。",
     "origins": "海勒姆·赖特（Hyrum Wright）在 Google 工作期间观察到这一现象，并在软件工程界广泛流传。它有时被称为「接口的隐含契约定律」。",
     "takeaways": [
@@ -122,17 +122,17 @@ const LAWS = [
       {
         "title": "Hyrum's Law Official Site",
         "url": "https://www.hyrumslaw.com/",
-        "description": "海勒姆·赖特关于此定律的原始阐述"
+        "description": "海勒姆定律的官方阐述"
       },
       {
         "title": "Software Engineering at Google",
         "url": "https://abseil.io/resources/swe-book/html/ch01.html#hyrumapostrophes_law",
-        "description": "马丁·福勒关于软件抽象与接口的讨论"
+        "description": "在大型系统语境下讨论海勒姆定律"
       },
       {
         "title": "Hyrum's Law on xkcd",
         "url": "https://xkcd.com/1172/",
-        "description": "Google 的 API 设计指南"
+        "description": "以漫画形式说明该问题的 xkcd 作品"
       }
     ]
   },
@@ -140,7 +140,7 @@ const LAWS = [
     "title": "童子军规则",
     "titleEn": "The Boy Scout Rule",
     "slug": "boy-scout-rule",
-    "description": "让代码比你发现它时更好。",
+    "description": "让代码比你接手时更好。",
     "descriptionEn": "Leave the code better than you found it.",
     "experience": "junior",
     "group": "Quality",
@@ -186,7 +186,7 @@ const LAWS = [
     "title": "YAGNI（你不会需要它）",
     "titleEn": "YAGNI (You Aren't Gonna Need It)",
     "slug": "yagni",
-    "description": "不要添加直到确实需要的功能。",
+    "description": "不要在确实需要之前添加功能。",
     "descriptionEn": "Don't add functionality until it is necessary.",
     "experience": "junior",
     "group": "Design",
@@ -540,7 +540,7 @@ const LAWS = [
     "title": "意外后果法则",
     "titleEn": "Law of Unintended Consequences",
     "slug": "law-of-unintended-consequences",
-    "description": "每当你改变一个复杂系统时，都要预料到意外。",
+    "description": "每当你改变一个复杂系统时，都要对意料之外的结果有所准备。",
     "descriptionEn": "Whenever you change a complex system, expect surprise.",
     "experience": "senior",
     "group": "Architecture",
@@ -562,17 +562,17 @@ const LAWS = [
       {
         "title": "Unintended consequences - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Unintended_consequences",
-        "description": "乔尔·斯波尔斯基关于系统复杂性的文章"
+        "description": "维基百科关于意外后果的条目"
       },
       {
         "title": "The Unanticipated Consequences of Purposive Social Action",
         "url": "https://www.jstor.org/stable/2084615",
-        "description": "关于理解和应对软件中的意外后果"
+        "description": "罗伯特·K·默顿 1936 年的原始论文"
       },
       {
         "title": "Freakonomics",
         "url": "https://freakonomics.com/",
-        "description": "持续交付和渐进式发布的权威指南"
+        "description": "探索意外后果的流行经济学博客与丛书"
       }
     ]
   },
@@ -602,12 +602,12 @@ const LAWS = [
       {
         "title": "Zawinski's Law - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law",
-        "description": "杰米·扎温斯基的个人网站和关于此定律的背景"
+        "description": "维基百科关于扎温斯基定律的条目"
       },
       {
         "title": "Don't Let Architecture Astronauts Scare You",
         "url": "https://www.joelonsoftware.com/2001/04/21/dont-let-architecture-astronauts-scare-you/",
-        "description": "乔尔·斯波尔斯基关于软件膨胀和功能蠕变的文章"
+        "description": "乔尔·斯波尔斯基关于软件膨胀与平台化的经典文章"
       }
     ]
   },
@@ -637,12 +637,12 @@ const LAWS = [
       {
         "title": "Dunbar's Number - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Dunbar%27s_number",
-        "description": "罗宾·邓巴关于社交群体规模与认知关系的原始研究论文"
+        "description": "维基百科关于邓巴数的条目"
       },
       {
         "title": "Grooming, Gossip, and the Evolution of Language",
         "url": "https://www.amazon.com/Grooming-Gossip-Evolution-Language-Dunbar/dp/0674363361",
-        "description": "哈佛商业评论关于如何组织快速成长的团队"
+        "description": "罗宾·邓巴引入这一概念的著作"
       }
     ]
   },
@@ -673,27 +673,27 @@ const LAWS = [
       {
         "title": "Ringelmann Effect - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Ringelmann_effect",
-        "description": "关于林格尔曼效应的相关学术研究"
+        "description": "维基百科关于林格尔曼效应的条目"
       },
       {
         "title": "Social Loafing - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Social_loafing",
-        "description": "哈佛商业评论关于什么让团队高效的研究"
+        "description": "效应背后的社会懈怠心理现象"
       },
       {
         "title": "The Two Pizza Rule",
         "url": "https://aws.amazon.com/executive-insights/content/amazon-two-pizza-team/",
-        "description": "Google 的 re:Work 项目——关于高效团队的研究摘要"
+        "description": "亚马逊保持团队精简高效的「双披萨」方法"
       },
       {
         "title": "The Tipping Point",
         "url": "https://amzn.to/4jfJ1Hb",
-        "description": "Malcolm Gladwell's book exploring how small changes can have big effects"
+        "description": "马尔科姆·格拉德威尔探讨小变化如何产生大影响的著作"
       },
       {
         "title": "From Aristotle to Ringelmann: A Large-Scale Analysis of Team Productivity and Coordination in Open Source Software Projects",
         "url": "https://doi.org/10.1007/s10664-015-9406-4",
-        "description": "Scholtes, Mavrodiev & Schweitzer (2016) - empirical study of team productivity and coordination in OSS projects"
+        "description": "Scholtes, Mavrodiev & Schweitzer (2016) — 开源软件项目中团队生产力与协调的实证研究"
       }
     ]
   },
@@ -724,12 +724,12 @@ const LAWS = [
       {
         "title": "Price's Law - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Price%27s_law",
-        "description": "德里克·普莱斯关于科学生产力分布的原始著作"
+        "description": "维基百科关于普莱斯定律及其经验挑战的条目"
       },
       {
         "title": "Derek J. de Solla Price - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Derek_J._de_Solla_Price",
-        "description": "关于开源社区中贡献者生产力模式的研究"
+        "description": "发现该定律的科学家传记"
       }
     ]
   },
@@ -759,12 +759,12 @@ const LAWS = [
       {
         "title": "Putt's Law and the Successful Technocrat - Amazon",
         "url": "https://amzn.to/4aAuOm0",
-        "description": "阿奇博尔德·普特关于技术管理的原始著作"
+        "description": "阿奇博尔德·普特的讽刺性原著"
       },
       {
         "title": "The Boeing 737 MAX: Lessons for Engineering Ethics",
         "url": "https://doi.org/10.1007/s11948-020-00252-y",
-        "description": "关于技术管理挑战的现代分析"
+        "description": "Herkert, Borenstein & Miller (2020) — 探讨管理决策凌驾于技术专长之上如何导致灾难"
       }
     ]
   },
@@ -794,12 +794,12 @@ const LAWS = [
       {
         "title": "The Peter Principle - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Peter_principle",
-        "description": "劳伦斯·J·彼得的开创性著作"
+        "description": "彼得原理及其影响的概述"
       },
       {
         "title": "The Peter Principle: Why Things Always Go Wrong - Amazon",
         "url": "https://amzn.to/48XHHW7",
-        "description": "关于科技公司如何管理职业晋升的现代研究"
+        "description": "劳伦斯·J·彼得 1969 年的原著"
       }
     ]
   },
@@ -830,27 +830,27 @@ const LAWS = [
       {
         "title": "Bus Factor - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Bus_factor",
-        "description": "关于软件项目中风险评估的指南"
+        "description": "巴士因子概念及其影响的概述"
       },
       {
         "title": "Left-pad incident - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Npm_left-pad_incident",
-        "description": "关于如何建立弹性工程团队的研究"
+        "description": "开源生态中巴士因子风险的现实案例——left-pad 事件"
       },
       {
         "title": "The Dead Sea Effect - Bruce F. Webster",
         "url": "https://brucefwebster.com/2008/04/11/the-wetware-crisis-the-dead-sea-effect/",
-        "description": "Google 工程实践文档中关于团队健康的内容"
+        "description": "描述人才如何从功能失调组织中流失的原创文章"
       },
       {
         "title": "If Guido was hit by a bus?",
         "url": "https://legacy.python.org/search/hypermail/python-1994q2/1040.html",
-        "description": "Michael McLay's 1994 mailing list post, one of the earliest references to the bus factor concept"
+        "description": "Michael McLay 1994 年的邮件列表帖子——巴士因子概念最早的参考文献之一"
       },
       {
         "title": "Organizational Patterns of Agile Software Development",
         "url": "https://www.wiley.com/en-us/Organizational+Patterns+of+Agile+Software+Development-p-9780131467408",
-        "description": "Coplien & Harrison (2004) - patterns for building effective software organizations"
+        "description": "Coplien & Harrison (2004) — 构建高效软件组织的模式"
       }
     ]
   },
@@ -936,7 +936,7 @@ const LAWS = [
     ]
   },
   {
-    "title": "九九九规则",
+    "title": "九十九十规则",
     "titleEn": "The Ninety-Ninety Rule",
     "slug": "ninety-ninety-rule",
     "description": "前 90% 的代码占据了前 90% 的开发时间，剩余的 10% 的代码占据另外 90% 的开发时间。",
@@ -962,22 +962,22 @@ const LAWS = [
       {
         "title": "Programming Pearls - Bumper Sticker Computer Science",
         "url": "https://moss.cs.iit.edu/cs100/Bentley_BumperSticker.pdf",
-        "description": "乔恩·本特利引用了该定律的编程珍珠专栏"
+        "description": "乔恩·本特利推广该定律的原始专栏"
       },
       {
         "title": "Programming Pearls (Book)",
         "url": "https://amzn.to/49bLHkn",
-        "description": "关于软件开发中估算和项目管理的实用指南"
+        "description": "乔恩·本特利关于编程智慧与技巧的经典著作"
       },
       {
         "title": "Ninety-Ninety Rule - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Ninety%E2%80%93ninety_rule",
-        "description": "史蒂夫·麦康奈尔关于软件估算的权威著作"
+        "description": "该规则及其在贝尔实验室起源的概述"
       },
       {
         "title": "Identifying and Mitigating the Ninety-Ninety Rule in Software Development",
         "url": "https://dev.to/ben/identifying-and-mitigating-the-ninety-ninety-rule-in-software-development-4ap3",
-        "description": "Practical strategies for recognizing and countering the ninety-ninety trap"
+        "description": "识别与应对九十九十陷阱的实用策略"
       }
     ]
   },
@@ -1046,22 +1046,22 @@ const LAWS = [
       {
         "title": "Goodhart's Law: How Measuring The Wrong Things Drive Immoral Behaviour",
         "url": "https://coffeeandjunk.com/goodharts-campbells-law/",
-        "description": "查尔斯·古德哈特关于货币政策和指标局限性的原始论文"
+        "description": "深入探讨古德哈特定律及其对组织的影响"
       },
       {
         "title": "Goodhart's Law - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Goodhart%27s_law",
-        "description": "关于如何在不产生负面激励的前提下使用工程指标"
+        "description": "该定律的起源与应用概述"
       },
       {
         "title": "The Tyranny of Metrics",
         "url": "https://amzn.to/4ji7rzY",
-        "description": "关于指标驱动管理中的陷阱和应对策略"
+        "description": "杰里·穆勒关于指标执念的意外后果的著作"
       },
       {
         "title": "Enshittification - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Enshittification",
-        "description": "How platforms degrade quality once metrics replace user value as the goal"
+        "description": "当指标取代用户价值成为目标时，平台如何退化"
       }
     ]
   },
@@ -1314,12 +1314,12 @@ const LAWS = [
       {
         "title": "The Cathedral and the Bazaar",
         "url": "https://amzn.to/49cYD9Y",
-        "description": "埃里克·S·雷蒙德关于开源开发的具有影响力的论文"
+        "description": "埃里克·S·雷蒙德关于开源开发的著名论文"
       },
       {
         "title": "Linus's Law - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/Linus%27s_law",
-        "description": "关于该定律及其影响的概述"
+        "description": "该定律及其影响的概述"
       },
       {
         "title": "With Enough Eyeballs, All Bugs Are Shallow - TechCrunch",
@@ -1329,17 +1329,17 @@ const LAWS = [
       {
         "title": "Revisiting Linus's Law: Benefits and Challenges of OSS Peer Review",
         "url": "https://www.sciencedirect.com/science/article/abs/pii/S1071581915000087",
-        "description": "拉斯·考克斯关于 xz 后门事件的详细时间线——「多眼假说」的警示性反例"
+        "description": "关于开源同行评审中成员差异影响的学术研究"
       },
       {
         "title": "An Empirical Study of Build Maintenance Effort - IEEE",
         "url": "https://www.computer.org/csdl/magazine/mi/2012/01/mmi2012010072/13rRUzphDuy",
-        "description": "IEEE study examining software maintenance and the many-eyes hypothesis"
+        "description": "IEEE 关于软件维护与多眼假说的实证研究"
       },
       {
         "title": "Timeline of the xz open source attack",
         "url": "https://research.swtch.com/xz-timeline",
-        "description": "Russ Cox's detailed timeline of the xz backdoor, a striking counterexample to many-eyes review"
+        "description": "拉斯·考克斯关于 xz 后门事件的详细时间线——对「多眼假说」的警示性反例"
       }
     ]
   },
@@ -1512,7 +1512,7 @@ const LAWS = [
     "title": "斯特金定律",
     "titleEn": "Sturgeon's Law",
     "slug": "sturgeons-law",
-    "description": "任何事物中的 90% 都是垃圾。",
+    "description": "万事万物，其中 90% 都是糟粕。",
     "descriptionEn": "90% of everything is crap.",
     "experience": "junior",
     "group": "Quality",
@@ -2021,7 +2021,7 @@ const LAWS = [
     "title": "沉没成本谬误",
     "titleEn": "Sunk Cost Fallacy",
     "slug": "sunk-cost-fallacy",
-    "description": "因为已经投入了时间或精力而坚持一个选择，即使放弃对你更有利。",
+    "description": "因已经投入了时间或精力而固守某个选择，即使放弃才对你更有利。",
     "descriptionEn": "Sticking with a choice because you've invested time or energy in it, even when walking away helps you.",
     "experience": "mid",
     "group": "Decisions",
@@ -2062,7 +2062,7 @@ const LAWS = [
     "title": "地图不等于疆域",
     "titleEn": "The Map Is Not the Territory",
     "slug": "map-is-not-the-territory",
-    "description": "我们对现实的表示不等于现实本身。",
+    "description": "我们对现实的表述不等于现实本身。",
     "descriptionEn": "Our representations of reality are not the same as reality itself.",
     "experience": "mid",
     "group": "Decisions",
@@ -2097,7 +2097,7 @@ const LAWS = [
     "title": "确认偏误",
     "titleEn": "Confirmation Bias",
     "slug": "confirmation-bias",
-    "description": "倾向于偏好支持我们已有信念或想法的信息。",
+    "description": "倾向于青睐那些支持我们已有信念或想法的信息。",
     "descriptionEn": "A tendency to favor information that supports our existing beliefs or ideas.",
     "experience": "mid",
     "group": "Decisions",
